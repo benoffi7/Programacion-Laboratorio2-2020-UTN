@@ -21,7 +21,8 @@ int cargarMuchosLectores(lector clubDeLectura[],int dim,int posInicial);
 void mostrarClub(lector clubDeLectura[],int cantidad);
 //dado un club lo guarda en un archivo binario, solo los +18 años
 void guardarEnArchivo(lector clubDeLectura[],int cantidad);
-
+//lee un archivo
+int leerArchivo(char nombreArchivo[30]);
 
 int main()
 {
