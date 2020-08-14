@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1597425036 source:d:\developer\c\2020-2 - comision 2\01-estructuras\empleados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"archivoEmpleados.h"
+	"empleados.h"
+
+1597424965 d:\developer\c\2020-2 - comision 2\01-estructuras\empleados.h
+
+1597425193 source:d:\developer\c\2020-2 - comision 2\01-estructuras\main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleados.h"
+	"archivoEmpleados.h"
+
+1597425316 source:d:\developer\c\2020-2 - comision 2\01-estructuras\archivoempleados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"empleados.h"
+	"archivoEmpleados.h"
+
+1597425023 d:\developer\c\2020-2 - comision 2\01-estructuras\archivoempleados.h
+	"empleados.h"
+
