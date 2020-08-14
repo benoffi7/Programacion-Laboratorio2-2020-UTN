@@ -10,6 +10,6 @@ void guardaEmpleadoArchivo(char archivoEmpleados[], stEmpleado e);
 void muestraArchivoDeEmpleados(char archivoEmpleados[]);
 int ingresaEmpleadosArray(stEmpleado e[], int v, int dim);
 void muestraArregloEmpleados(stEmpleado e[], int v);
-int cuentaRegistros(char file, int dataSize);
+int cuentaRegistros(char file[], int dataSize);
 
 #endif // ARCHIVOEMPLEADOS_H_INCLUDED

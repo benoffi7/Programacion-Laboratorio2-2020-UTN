@@ -52,6 +52,13 @@ stEmpleado cargaUnEmpleado()
     return e;
 }
 
+/*********************************************************//**
+*
+* \brief Muestra un empleado
+* \param stEmpleado e - un empleado cargado
+* \return void
+*
+***********************************************************/
 void mostrarUnEmpleado(stEmpleado e)
 {
     printf("\n-------------------------------\n");

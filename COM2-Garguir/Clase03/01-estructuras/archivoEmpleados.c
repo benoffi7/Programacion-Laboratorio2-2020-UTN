@@ -7,8 +7,13 @@
 
 #define AR_EMPLEADOS "empleados.dat"
 
-
-
+/*********************************************************//**
+*
+* \brief Busca el ultimo Id cargado
+* \param string archivoEmpleados - el nombre del archivo
+* \return int - el ultimo id
+*
+***********************************************************/
 int ultimoIdEmpleado(char archivoEmplados[])
 {
     stEmpleado e;
@@ -27,6 +32,13 @@ int ultimoIdEmpleado(char archivoEmplados[])
     return id;
 }
 
+/*********************************************************//**
+*
+* \brief Busca un DNI en el archivo
+* \param string dni - el DNI a buscar
+* \return int - 1 si existe - 0 si no existe
+*
+***********************************************************/
 int existeDNIEmpleado(char dni[])
 {
     stEmpleado e;
@@ -47,6 +59,13 @@ int existeDNIEmpleado(char dni[])
     return flag;
 }
 
+/*********************************************************//**
+*
+* \brief Carga el archivo de empleados usando cargaUnEmpleado() y guardaEmpleadoArchivo()
+* \param sin parametros
+* \return void
+*
+***********************************************************/
 void ingresaEmpleadosArchivo()
 {
     stEmpleado e;
@@ -64,6 +83,14 @@ void ingresaEmpleadosArchivo()
     while(opcion!=27);
 }
 
+/*********************************************************//**
+*
+* \brief Guarda un empleado en el archivo
+* \param string archivoEmpleados - el nombre del archivo
+* \param stEmpleado e - un empleado
+* \return void
+*
+***********************************************************/
 void guardaEmpleadoArchivo(char archivoEmpleados[], stEmpleado e)
 {
     FILE *archi=fopen(archivoEmpleados,"ab");
@@ -74,6 +101,13 @@ void guardaEmpleadoArchivo(char archivoEmpleados[], stEmpleado e)
     }
 }
 
+/*********************************************************//**
+*
+* \brief Muestra el archivo de empleados
+* \param string archivoEmpleados - el nombre del archivo
+* \return void
+*
+***********************************************************/
 void muestraArchivoDeEmpleados(char archivoEmpleados[])
 {
     stEmpleado e;
@@ -90,6 +124,15 @@ void muestraArchivoDeEmpleados(char archivoEmpleados[])
     }
 }
 
+/*********************************************************//**
+*
+* \brief Ingresa empleados a un arreglo
+* \param stEmpleado e - el arreglo
+* \param int v - sus validos
+* \param int dim - su dimension
+* \return int v - la cantidad de datos cargados
+*
+***********************************************************/
 int ingresaEmpleadosArray(stEmpleado e[], int v, int dim)
 {
     char opcion=0;
@@ -106,12 +149,30 @@ int ingresaEmpleadosArray(stEmpleado e[], int v, int dim)
     return v;
 }
 
+/*********************************************************//**
+*
+* \brief Muestra el arreglo de empleados
+* \param stEmpleado e - el arreglo
+* \param int v sus validos
+* \return void
+*
+***********************************************************/
 void muestraArregloEmpleados(stEmpleado e[], int v){
     for(int i=0;i<v;i++){
         mostrarUnEmpleado(e[i]);
     }
 }
 
+/*********************************************************//**
+*
+* \brief Copia empleados del archivo en el arreglo
+* \param string archivo - el nombre del archivo
+* \param stEmpleado e - el arreglo de empleados
+* \param int v - los validos del arreglo
+* \param int dim - la dimension del arreglo
+* \return int v - los validos del arreglo
+*
+***********************************************************/
 int archivoEmpleados2arreglo(char archivo[], stEmpleado e[], int v, int dim){
     FILE *pArch = fopen(archivo, "rb");
     if(pArch){
@@ -123,6 +184,15 @@ int archivoEmpleados2arreglo(char archivo[], stEmpleado e[], int v, int dim){
     return v;
 }
 
+/*********************************************************//**
+*
+* \brief Copia el archivo de empleados completo en el arreglo
+* \param string archivo - el nombre del archivo
+* \param stEmpleado e - el arreglo de empleados vacio
+* \param int dim - la dimension del arreglo
+* \return int v - los validos del arreglo
+*
+***********************************************************/
 int archivoCompletoEmpleados2arreglo(char archivo[], stEmpleado e[], int dim){
     int v = cuentaRegistros(archivo, sizeof(stEmpleado));
     ///v=(v>dim)?dim:v;
@@ -138,7 +208,14 @@ int archivoCompletoEmpleados2arreglo(char archivo[], stEmpleado e[], int dim){
     return v;
 }
 
-
-int cuentaRegistros(char file, int dataSize){
+/*********************************************************//**
+*
+* \brief Retorna la cantidad de registros de un archivo
+* \param string file - el nombre del archivo
+* \param int dataSize - el tamaño de la estructura
+* \return int v - la cantidad de registros
+*
+***********************************************************/
+int cuentaRegistros(char file[], int dataSize){
 
 }
