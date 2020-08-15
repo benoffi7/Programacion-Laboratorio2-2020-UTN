@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1597429899 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\punterosejemplosvs\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
