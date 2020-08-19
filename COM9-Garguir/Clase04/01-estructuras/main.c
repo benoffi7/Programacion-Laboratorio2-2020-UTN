@@ -3,6 +3,7 @@
 #include <conio.h>
 #include "cliente.h"
 #include "archivoClientes.h"
+#include "pila.h"
 
 #define AR_CLIENTES "clientes.dat"
 #define DIM_CLI 100
@@ -11,8 +12,20 @@ void muestraMenu();
 
 int main()
 {
+    stCliente *pArreglo=NULL;
+    int vPA=0;
+
     stCliente clientes[DIM_CLI];
     int vCli = 0;
+    Pila a;
+    Pila b;
+    inicpila(&a);
+    inicpila(&b);
+    apilar(&a,5);
+    apilar(&a,6);
+    apilar(&a,8);
+    apilar(&a,1);
+    copiaPila(a, &b);
 
     char opcion;
 
@@ -40,6 +53,12 @@ int main()
                 break;
             case 54:
                 vCli = archivoCompletoClientes2Arreglo(AR_CLIENTES, clientes, DIM_CLI);
+            case 55:
+                pArreglo = archivoCompletoClientes2Arreglo1(AR_CLIENTES, pArreglo, &vPA);
+                muestraClientesArreglo(pArreglo, vPA);
+            case 56:
+                vPA = archivoCompletoClientes2Arreglo2(AR_CLIENTES, &pArreglo, vPA);
+                muestraClientesArreglo(pArreglo, vPA);
         }
         ///getch(); /// es una pausa
         system("pause");
@@ -57,6 +76,22 @@ void muestraMenu(){
     printf("\n 4 - Muestra Arreglo de Clientes");
     printf("\n 5 - Copia Clientes del archivo en el Arreglo");
     printf("\n 6 - Copia todos los Clientes del archivo en el Arreglo");
+    printf("\n 7 - Copia todos los Clientes del archivo en el Arreglo retornando el puntero");
+    printf("\n 8 - Copia todos los Clientes del archivo en el Arreglo por refencia y retorna validos");
 
     printf("\n\n    ESC para salir.....");
+}
+
+
+void intercambio(stCliente *a, stCliente *b){
+    stCliente aux;
+    aux=*a;
+    *a=*b;
+    *b=aux;
+}
+
+void copiaPila(Pila origen, Pila *destino){
+    while(!pilavacia(&origen)){
+        apilar(destino, desapilar(&origen));
+    }
 }

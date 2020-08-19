@@ -203,6 +203,51 @@ int archivoCompletoClientes2Arreglo(char archivo[], stCliente c[], int dim){
 
 /*********************************************************//**
 *
+* \brief Copia el archivo completo en un arreglo dinamico de clientes
+* \param stCliente *c - el arreglo de clientes sin inicializar
+* \param int *v - puntero a validos
+* \return stCliente *c - el arreglo dinamico
+*
+***********************************************************/
+stCliente* archivoCompletoClientes2Arreglo1(char archivo[], stCliente *c, int *v){
+    FILE *pArch = fopen(archivo, "rb");
+    (*v) = cuentaRegistros(archivo, sizeof(stCliente));
+
+    c = (stCliente*) malloc(sizeof(stCliente)*(*v));
+
+    if(pArch){   /// if(pArch!=NULL)
+        fread(c, sizeof(stCliente), (*v), pArch);
+        fclose(pArch);
+    }
+
+    return c;
+}
+
+/*********************************************************//**
+*
+* \brief Copia el archivo completo en un arreglo dinamico de clientes
+* \param stCliente **c - el arreglo de clientes sin inicializar
+* \param int v - sus validos
+* \return int v - sus validos
+*
+***********************************************************/
+int archivoCompletoClientes2Arreglo2(char archivo[], stCliente **c, int v){
+    FILE *pArch = fopen(archivo, "rb");
+    v = cuentaRegistros(archivo, sizeof(stCliente));
+
+    (*c) = (stCliente*) malloc(sizeof(stCliente)*v);
+    ///(*c) = realloc((*c), sizeof(stCliente)*v+50);
+    if(pArch){   /// if(pArch!=NULL)
+        fread((*c), sizeof(stCliente), v, pArch);
+        fclose(pArch);
+    }
+
+    return v;
+}
+
+
+/*********************************************************//**
+*
 * \brief Cuenta la cantidad de registra de un archivo
 * \param char archivo[] - el nombre del archivo
 * \param int dataSize - el sizeof del tipo de dato del archivo
@@ -220,3 +265,6 @@ int cuentaRegistros(char archivo[], int dataSize){
 
     return cantReg;
 }
+
+
+

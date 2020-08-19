@@ -1,5 +1,27 @@
 # depslib dependency file v1.0
-1597182574 source:d:\developer\c\2020-2 - comision 9\01-estructuras\main.c
+1597517734 source:d:\developer\c\2020-2 - comision 9\01-estructuras\main.c
 	<stdio.h>
 	<stdlib.h>
+	<conio.h>
+	"cliente.h"
+	"archivoClientes.h"
+
+1597517541 source:d:\developer\c\2020-2 - comision 9\01-estructuras\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"archivoClientes.h"
+	"cliente.h"
+
+1597452066 d:\developer\c\2020-2 - comision 9\01-estructuras\cliente.h
+
+1597517591 source:d:\developer\c\2020-2 - comision 9\01-estructuras\archivoclientes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"cliente.h"
+	"archivoClientes.h"
+
+1597517443 d:\developer\c\2020-2 - comision 9\01-estructuras\archivoclientes.h
+	"cliente.h"
 
