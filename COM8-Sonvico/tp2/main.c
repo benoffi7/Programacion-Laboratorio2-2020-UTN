@@ -103,24 +103,7 @@ void inicPila(Pila * p)
    // (*p).posTope=0;
 }
 
-int factorial (int x){
 
-
-    int rta;
-
-    if(x==0)
-    {
-        rta=1;
-    }
-    else
-    {
-        rta=x*factorial(x-1);
-    }
-
-    return rta;
-
-
-}
 
 int main()
 {
