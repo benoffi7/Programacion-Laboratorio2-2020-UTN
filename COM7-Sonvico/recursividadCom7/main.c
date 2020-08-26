@@ -110,6 +110,69 @@ int sumarecursiva(int A[], int validos, int i)
 }
 
 
+
+
+
+int menorRecursivo(int A[], int i, int cant)
+{
+    int m;
+    /// cuando llego al final del arreglo, retorno ese valor
+    /// para comparar con los de las etapas recursivas anteriores
+    if(i==cant-1)
+    {
+        m=A[cant];
+    }
+    else
+    {
+        m=menorRecursivo(A, i+1, cant);
+
+        if(m>A[i])
+        {
+            m = A[i];
+        }
+    }
+    return m;
+}
+
+/// 5 Determinar en forma recursiva si un arreglo es capicúa
+int capicua (int A[], int i, int u)
+{
+    int rta;
+    if(i<u)
+    {
+        if(A[i]==A[u])
+        {
+            rta=capicua(A,i+1,u-1);
+        }
+        else
+        {
+            rta=0;  /// A[i]!=A[u]
+        }
+    }
+    else  /// i>=u
+    {
+        rta=1;
+    }
+    return rta;
+}
+
+int otrocapicua(int A[], int i, int u)
+{
+    int rta=1;
+    if(i<u)
+    {
+        if(A[i]==A[u])
+        {
+            rta=otrocapicua(A,i+1,u-1);
+        }
+        else
+        {
+            rta=0;
+        }
+    }
+    return rta;
+}
+
 int main()
 {
     printf("Hello world!\n");
