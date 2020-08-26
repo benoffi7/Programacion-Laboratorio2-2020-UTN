@@ -77,8 +77,6 @@ int sumarArregloRecursivo(int A[], int validos, int i)
 }
 
 
-
-
 /// ojo con el parametro viajero...
 /// no utilizar
 int sumarRecursivo (int a[],int cant,int i,int suma)
