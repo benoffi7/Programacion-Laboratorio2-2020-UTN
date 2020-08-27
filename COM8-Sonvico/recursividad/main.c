@@ -41,6 +41,7 @@ void mostrarArregloRecursivoInvertido(int A[], int validos, int i)
     else
     {
         mostrarArregloRecursivoInvertido(A, validos, i+1);
+
         printf("%d ", A[i]);
     }
 }
@@ -73,8 +74,118 @@ int sumarArregloRecursivo(int A[], int validos, int i)
     {
         rta=A[i]+sumarArregloRecursivo(A, validos, i+1);
     }
+
     return rta;
 }
+
+
+
+
+int buscaMenorEnArreglo(int A[], int validos, int i)
+{
+    int menor;
+
+    if(i==validos-1)
+    {
+        menor=A[i];
+    }else
+    {
+        menor=buscaMenorEnArreglo(A, validos, i+1);
+
+        if(A[i]<menor)
+        {
+            menor=A[i];
+        }
+    }
+
+    return menor;
+
+}
+
+///From Bruno Iván Fabrizio to Everyone:  09:17 PM
+int arregloCapicua(int A[], int i, int u)
+{
+    int flag=1;  /// lo supone capicua
+
+    if(i<u)
+    {
+        if(A[i]!=A[u])
+        {
+            flag=0
+        }
+        else
+        {
+            flag=arregloCapicua(A, i+1, u-1);
+
+        }
+    }
+
+    return flag;
+}
+
+///From Nico Tesone to Everyone:  09:22 PM
+
+int ArrayCapicua_Recursivo (int a[], int validos,int i)
+{
+    //fn que determian si un arreglo es capicua o no de forma recursiva y devuelve, 1 capicua | 0 no es capicua.
+
+    int rta=1;
+
+    if(i<=validos/2)
+    {
+
+        if(a[i]==a[validos-1-i])
+        {
+            rta=ArregloCapicua_Recursivo(a,validos,i+1);
+        }
+        else
+        {
+            rta=0;
+        }
+    }
+    return rta;
+}
+
+/// 5 Determinar en forma recursiva si un arreglo es capicúa
+int capicua (int A[], int i, int u)
+{
+    int rta;
+    if(i<u)
+    {
+        if(A[i]==A[u])
+        {
+            rta=capicua(A,i+1,u-1);
+        }
+        else
+        {
+            rta=0;  /// A[i]!=A[u]   no es capicua
+        }
+    }
+    else  /// i>=u
+    {
+        rta=1; /// es capicua
+    }
+    return rta;
+}
+
+int otrocapicua(int A[], int i, int u)
+{
+    int rta=1;
+    if(i<u)
+    {
+        if(A[i]==A[u])
+        {
+            rta=otrocapicua(A,i+1,u-1);
+        }
+        else
+        {
+            rta=0;
+        }
+    }
+    return rta;
+}
+
+
 
 
 /// ojo con el parametro viajero...
@@ -86,8 +197,6 @@ int sumarRecursivo (int a[],int cant,int i,int suma)
     }
     return suma;
 }
-
-
 
 
 int main()
