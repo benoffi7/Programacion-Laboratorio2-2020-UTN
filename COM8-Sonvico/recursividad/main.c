@@ -55,7 +55,8 @@ int sumarArregloRecursivo(int A[], int validos, int i)
     if(i==validos) ///cc
     {
         rta=0;   /// st
-    }else
+    }
+    else
     {
         rta=A[i]+sumarArregloRecursivo(A, validos, i+1);
     }
@@ -65,18 +66,18 @@ int sumarArregloRecursivo(int A[], int validos, int i)
 
 }
 
-int sumarArregloRecursivo(int A[], int validos, int i)
-{
-    int rta=0;   /// si no hay arreglo, la suma es cero
-    /// cond. de corte y sol trivial implicita
-
-    if(i<validos)
-    {
-        rta=A[i]+sumarArregloRecursivo(A, validos, i+1);
-    }
-
-    return rta;
-}
+//int sumarArregloRecursivo(int A[], int validos, int i)
+//{
+//    int rta=0;   /// si no hay arreglo, la suma es cero
+//    /// cond. de corte y sol trivial implicita
+//
+//    if(i<validos)
+//    {
+//        rta=A[i]+sumarArregloRecursivo(A, validos, i+1);
+//    }
+//
+//    return rta;
+//}
 
 
 
@@ -88,7 +89,8 @@ int buscaMenorEnArreglo(int A[], int validos, int i)
     if(i==validos-1)
     {
         menor=A[i];
-    }else
+    }
+    else
     {
         menor=buscaMenorEnArreglo(A, validos, i+1);
 
@@ -111,7 +113,7 @@ int arregloCapicua(int A[], int i, int u)
     {
         if(A[i]!=A[u])
         {
-            flag=0
+            flag=0;
         }
         else
         {
@@ -136,7 +138,7 @@ int ArrayCapicua_Recursivo (int a[], int validos,int i)
 
         if(a[i]==a[validos-1-i])
         {
-            rta=ArregloCapicua_Recursivo(a,validos,i+1);
+            rta=ArrayCapicua_Recursivo(a,validos,i+1);
         }
         else
         {
@@ -192,12 +194,99 @@ int otrocapicua(int A[], int i, int u)
 /// no utilizar
 int sumarRecursivo (int a[],int cant,int i,int suma)
 {
-    if(i<cant){
+    if(i<cant)
+    {
         suma=a[i] + sumarRecursivo(a,cant,i+1,suma);
     }
     return suma;
 }
 
+/// aux archivos
+void Cargar_Archivo(char Nombre[])
+{
+    FILE * archi=NULL;
+    int Numeros=0;
+    char control='s';
+
+    archi=fopen(Nombre, "wb");
+    if(archi != NULL)
+    {
+        while (control!='n')
+        {
+            printf("Ingrese un numero por favor: ");
+            scanf("%d",&Numeros);
+            fwrite(&Numeros,sizeof(int),1,archi);
+            printf("Desea ingresar otro numero al archivo?? ");
+            fflush(stdin);
+            scanf("%c",&control);
+        }
+        fclose(archi);
+    }
+}
+
+void Mostrar_Archivo(char Nombre[])
+{
+    FILE * archi=NULL;
+    int Numeros=0;
+
+    archi=fopen(Nombre, "rb");
+    if(archi != NULL)
+    {
+        printf("\n\nContenido del archivo: ");
+        while (fread(&Numeros,sizeof(int),1,archi)>0)
+        {
+            printf(" %d", Numeros);
+        }
+        fclose(archi);
+    }
+}
+
+void muestraArchivoInvertido(FILE * arch)
+{
+
+    int numero;
+
+
+    if(fread(&numero, sizeof(int), 1, arch)>0)
+    {
+        muestraArchivoInvertido(arch);
+
+        printf("%d ", numero);
+    }
+
+}
+
+void iniciaMostrarInvertido(char nombre[])
+{
+    FILE *arch=NULL;
+
+    arch=fopen(nombre, "rb");
+
+    if(arch!=NULL)
+    {
+        printf("\n\nContenido del archivo invertido: ");
+        muestraArchivoInvertido(arch);
+        fclose(arch);
+    }
+    else
+    {
+        printf("Paso algo muy malo...");
+    }
+}
+
+
+void invertirUnArreglo(int A[], int i, int u)
+{
+    int aux;
+    if(i<u)
+    {
+        aux=A[i];
+        A[i]=A[u];
+        A[u]=aux;
+
+        invertirUnArreglo(A, i+1, u-1);
+    }
+}
 
 int main()
 {
@@ -207,10 +296,13 @@ int main()
 
     int unArreglo[5]= {10,20,30,40,50};
 
-    mostrarArregloRecursivoInvertido(unArreglo, 5, 0);
+    mostrarArregloRecursivo(unArreglo, 5, 0);
 
     system("pause");
 
-    printf("%d", valorFactorizado);
+    invertirUnArreglo(unArreglo, 0, 4);
+
+    mostrarArregloRecursivo(unArreglo, 5, 0);
+
     return 0;
 }
