@@ -54,6 +54,7 @@ void insertarAlFinal(nodo** lista, int dato)
 }
 
 
+
 void insertarEnOrden(nodo** lista, int dato)
 {
     nodo* nuevo = crearNodo(dato);
