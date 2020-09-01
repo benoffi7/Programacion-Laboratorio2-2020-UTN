@@ -8,6 +8,8 @@ typedef struct
 
 } nodo;
 
+
+
 nodo* crearNodo(int dato)
 {
     nodo* nuevo= (nodo*)malloc(sizeof(nodo));
@@ -17,13 +19,13 @@ nodo* crearNodo(int dato)
     return nuevo;
 }
 
-void intercambio(int *a, int* b)
-{
-    int c;
-    c = *b;
-    *b=*a;
-    *a=c;
-}
+//void intercambio(int *a, int* b) //entendiendo punteros
+//{
+//    int c;
+//    c = *b;
+//    *b=*a;
+//    *a=c;
+//}
 
 void insertarAlPrincipio(nodo** lista, int dato)
 {
@@ -111,7 +113,6 @@ int busqueda(nodo* lista, int valor)
 int main()
 {
     nodo* lista=NULL;
-    int dato = 3;
     insertarAlPrincipio(&lista,6);
     insertarAlPrincipio(&lista,7);
     insertarAlPrincipio(&lista,3);
