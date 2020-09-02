@@ -1,0 +1,51 @@
+# depslib dependency file v1.0
+1599086470 source:d:\developer\c\2020-2 - comision 9\01-estructuras\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	"cliente.h"
+	"archivoClientes.h"
+	"pila.h"
+	"stack.h"
+	"listaClientes.h"
+
+1597517541 source:d:\developer\c\2020-2 - comision 9\01-estructuras\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"archivoClientes.h"
+	"cliente.h"
+
+1597452066 d:\developer\c\2020-2 - comision 9\01-estructuras\cliente.h
+
+1598056382 source:d:\developer\c\2020-2 - comision 9\01-estructuras\archivoclientes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"cliente.h"
+	"archivoClientes.h"
+
+1597795001 d:\developer\c\2020-2 - comision 9\01-estructuras\archivoclientes.h
+	"cliente.h"
+
+1460668108 source:d:\developer\c\2020-2 - comision 9\01-estructuras\pila.c
+	"pila.h"
+
+1460119454 d:\developer\c\2020-2 - comision 9\01-estructuras\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1598396614 d:\developer\c\2020-2 - comision 9\01-estructuras\stack.h
+
+1598445380 source:d:\developer\c\2020-2 - comision 9\01-estructuras\stack.c
+	<stdlib.h>
+	"stack.h"
+
+1599086529 source:d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.c
+	"listaClientes.h"
+
+1599085907 d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.h
+	<stdio.h>
+	<malloc.h>
+	"cliente.h"
+
