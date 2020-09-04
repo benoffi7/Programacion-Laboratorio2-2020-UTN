@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "persona.h"
 
@@ -37,7 +38,6 @@ nodo * agregarPpio(nodo * lista, nodo * nuevoNodo)
 }
 
 
-
 void mostrarNodo(nodo * aux)
 {
     mostrarPersona(aux->dato);
@@ -46,11 +46,22 @@ void mostrarNodo(nodo * aux)
 void recorrerYmostrar(nodo * lista)
 {
     nodo * seg = lista;
-    while (seg->siguiente != NULL)
+    while (seg != NULL)
     {
         mostrarNodo(seg);
         seg= seg->siguiente;
     }
+}
+
+nodo * buscarUltimo(nodo * lista)
+{
+    nodo * seg = lista;
+    if(seg)
+        while(seg->siguiente != NULL)
+        {
+            seg = seg->siguiente;
+        }
+    return seg;
 }
 
 nodo * agregarFinal(nodo * lista, nodo * nuevoNodo)
@@ -65,17 +76,6 @@ nodo * agregarFinal(nodo * lista, nodo * nuevoNodo)
         ultimo->siguiente = nuevoNodo;
     }
     return lista;
-}
-
-nodo * buscarUltimo(nodo * lista)
-{
-    nodo * seg = lista;
-    if(seg)
-        while(seg->siguiente != NULL)
-        {
-            seg = seg->siguiente;
-        }
-    return seg;
 }
 
 nodo * buscarNodo( nodo * lista, char nombre[20])
@@ -102,28 +102,74 @@ nodo * borrarNodo(nodo * lista, char nombre[20])
     nodo * seg;
     nodo * ante;	//apunta al nodo anterior que seg.
 
-    if((lista != NULL) && (strcmp(nombre, lista->dato.nombre)==0 ))
+    if(lista!=NULL)
     {
-        nodo * aux = lista;
-        lista = lista->siguiente; //salteo el primer nodo.
-        free(aux); //elimino el primer nodo.
-    }
-    else
-    {
-        seg = lista;
-        while((seg != NULL) && (strcmp(nombre, seg->dato.nombre)!=0 ))
+        if(strcmp(nombre, lista->dato.nombre)==0 )
         {
-            ante = seg;	//adelanto una posicion la var ante.
-            seg = seg->siguiente; //avanzo al siguiente nodo.
+            nodo * aux = lista;
+            lista = lista->siguiente; //salteo el primer nodo.
+            free(aux); //elimino el primer nodo.
         }
-
-        if( seg!= NULL)
+        else
         {
-            ante->siguiente = seg->siguiente; //salteo el nodo que quiero eliminar.
-            free(seg); //elimino el nodo.
+            seg = lista;
+            while((seg != NULL) && (strcmp(nombre, seg->dato.nombre)!=0 ))
+            {
+                ante = seg;	//adelanto una posicion la var ante.
+                seg = seg->siguiente; //avanzo al siguiente nodo.
+            }
+
+            if( seg!= NULL)
+            {
+                ante->siguiente = seg->siguiente; //salteo el nodo que quiero eliminar.
+                free(seg); //elimino el nodo.
+            }
         }
     }
     return lista;
+}
+
+nodo * agregarEnOrden(nodo * lista, nodo * nuevoNodo)
+{
+    if(lista==NULL)
+    {
+        lista = nuevoNodo;
+    }
+    else
+    {
+        if(lista->dato.edad>nuevoNodo->dato.edad)
+        {
+            lista=agregarPpio(lista, nuevoNodo);
+        }
+        else
+        {
+            nodo * seg = lista->siguiente;
+            nodo * ante= lista;
+
+            while(seg!=NULL && seg->dato.edad<nuevoNodo->dato.edad)
+            {
+                ante=seg;
+                seg=seg->siguiente;
+            }
+
+            ante->siguiente=nuevoNodo;
+            nuevoNodo->siguiente=seg;
+        }
+    }
+    return lista;
+}
+
+nodo * borrarTodaLaLista(nodo * lista) {
+   nodo * proximo;
+   nodo * seg;
+   seg = lista;
+   while(seg != NULL) {
+      proximo = seg->siguiente;  //tomo la dir del siguiente.
+      free(seg);                 //borro el actual.
+      seg = proximo;             //actualizo el actual con la dir del
+                                 //siguiente, para avanzar.
+   }
+   return seg; // retorna NULL a la variable lista del main()
 }
 
 
@@ -133,9 +179,9 @@ int main()
 
     nodo * lista;
 
-    persona aux1={"pepe", 23};
-    persona aux2={"maria", 34};
-    persona aux3={"jose", 30};
+    persona aux1= {"pepe", 23};
+    persona aux2= {"maria", 34};
+    persona aux3= {"jose", 30};
 
 
     lista=inicLista();
@@ -144,8 +190,6 @@ int main()
     lista=agregarPpio(lista, crearNodo(aux2));
     lista=agregarPpio(lista, crearNodo(aux3));
 
-
-    lista=inicLista();
 
     recorrerYmostrar(lista);
 
