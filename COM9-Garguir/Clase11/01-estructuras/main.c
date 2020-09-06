@@ -15,6 +15,7 @@ void cargaPila(Stack *s, int cantidad);
 void muestraPila(Stack s);
 void copiaPila(Pila origen, Pila *destino);
 nodo* arreglo2lista(stCliente a[], int v, nodo* lista);
+nodo* archivo2lista(char arClientes[], nodo* lista);
 
 int main()
 {
@@ -52,6 +53,9 @@ int main()
         opcion=getch();
 
         switch(opcion){
+            case 48:
+                generaArchivoRandom(100);
+                break;
             case 49:
                 cargaClientesArchivo();
                 break;
@@ -69,8 +73,6 @@ int main()
                 break;
             case 54:
                 vCli = archivoCompletoClientes2Arreglo(AR_CLIENTES, clientes, DIM_CLI);
-                listaClientes = arreglo2lista(clientes, vCli, listaClientes);
-                muestraLista(listaClientes);
                 break;
             case 55:
                 pArreglo = archivoCompletoClientes2Arreglo1(AR_CLIENTES, pArreglo, &vPA);
@@ -79,6 +81,10 @@ int main()
             case 56:
                 vPA = archivoCompletoClientes2Arreglo2(AR_CLIENTES, &pArreglo, vPA);
                 muestraClientesArreglo(pArreglo, vPA);
+                break;
+            case 57:
+                listaClientes = archivo2lista(AR_CLIENTES, listaClientes);
+                muestraLista(listaClientes);
         }
         ///getch(); /// es una pausa
         system("pause");
@@ -90,6 +96,7 @@ int main()
 
 void muestraMenu(){
     printf("\n\t\t\t Menu Principal \n\n");
+    printf("\n 0 - Genera 100 registros aleatorios en el archivo de Clientes");
     printf("\n 1 - Carga archivo de Clientes");
     printf("\n 2 - Muestra archivo de Clientes");
     printf("\n 3 - Carga Arreglo de Clientes");
@@ -98,6 +105,7 @@ void muestraMenu(){
     printf("\n 6 - Copia todos los Clientes del archivo en el Arreglo");
     printf("\n 7 - Copia todos los Clientes del archivo en el Arreglo retornando el puntero");
     printf("\n 8 - Copia todos los Clientes del archivo en el Arreglo por refencia y retorna validos");
+    printf("\n 9 - Copia el archivo de Clientes en una lista");
 
     printf("\n\n    ESC para salir.....");
 }
@@ -160,3 +168,14 @@ nodo* arreglo2lista(stCliente a[], int v, nodo* lista){
     return lista;
 }
 
+nodo* archivo2lista(char arClientes[], nodo* lista){
+    FILE *pArchi = fopen(arClientes, "rb");
+    stCliente c;
+    if(pArchi){
+        while(fread(&c, sizeof(stCliente), 1, pArchi)>0){
+            lista=agregarAlFinal(lista, crearNodo(c));
+        }
+        fclose(pArchi);
+    }
+    return lista;
+}

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1599262444 source:d:\developer\c\2020-2 - comision 9\01-estructuras\main.c
+1599396075 source:d:\developer\c\2020-2 - comision 9\01-estructuras\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -41,10 +41,10 @@
 	<stdlib.h>
 	"stack.h"
 
-1599264301 source:d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.c
+1599396173 source:d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.c
 	"listaClientes.h"
 
-1599256952 d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.h
+1599397327 d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.h
 	<stdio.h>
 	<malloc.h>
 	"cliente.h"
@@ -61,18 +61,18 @@
 	<stdlib.h>
 	<windows.h>
 
-1599251299 source:d:\developer\c\2020-2 - comision 9\01-estructuras\registroarchivo.c
+1599396577 source:d:\developer\c\2020-2 - comision 9\01-estructuras\registroarchivo.c
 	"registroArchivo.h"
 
-1599251230 d:\developer\c\2020-2 - comision 9\01-estructuras\registroarchivo.h
+1599395526 d:\developer\c\2020-2 - comision 9\01-estructuras\registroarchivo.h
 	<stdlib.h>
 	<stdio.h>
 	<windows.h>
 	<conio.h>
 	<time.h>
+	"cliente.h"
 	"utilidades.h"
 	"gotoxy.h"
-	"cliente.h"
 
 1491399894 d:\developer\c\2020-2 - comision 9\01-estructuras\gotoxy.h
 

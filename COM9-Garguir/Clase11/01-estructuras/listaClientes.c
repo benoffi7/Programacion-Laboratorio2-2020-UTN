@@ -22,7 +22,7 @@ nodo* agregarAlPrincipio(nodo* lista, nodo* nuevoNodo){
 }
 
 void muestraNodo(nodo *nodo){
-    printf("\n %p - %p --------------------------------------------------", nodo, nodo->siguiente);
+    printf("\n nodo: %p - nodo->siguiente: %p",  nodo, nodo->siguiente);
     muestraUnCliente(nodo->dato);
 }
 
@@ -56,10 +56,26 @@ nodo* agregarAlFinal(nodo* lista, nodo* nuevo){
 nodo* borrarLista(nodo* lista){
     nodo* proximo;
     nodo* seg = lista;
-    while(seg){   /// while(seg!=NULL)
+    while(seg){   /// esto es igual a while(seg!=NULL)
         proximo = seg->siguiente;   /// tomo la direccion del siguiente nodo
-        free(seg);
-        seg = proximo;
+        free(seg);              /// libero la memoria del nodo actual
+        seg = proximo;          /// me muevo al siguiente nodo
     }
     return seg;
 }
+
+/**
+   Pseudocodigo para recorrer una coleccion generica
+
+   mientras (la-coleccion-tenga-datos) entonces
+        utilizo el-dato-actual
+        me-muevo-al-siguiente-dato
+   fin-mientras
+
+                            |   arreglo    |        pila      |    archivo          |     lista           |     arbol    |
+la-coleccion-tenga-datos      i < validos     !pilavacia()        fread() > 0          lista!=NULL           ya lo veremos
+el-dato-actual                  arreglo[i]         tope()         la variable leida     lista                ya lo veremos
+me-muevo-al-siguiente-dato        i++            desapilar()      lo hace fread        lista=lista->sig      ya lo veremos
+
+
+*/

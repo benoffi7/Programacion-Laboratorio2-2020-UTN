@@ -4,9 +4,9 @@
 #include <malloc.h>
 #include "cliente.h"
 
-typedef struct {
+typedef struct _nodo{
     stCliente dato;
-    struct nodo *siguiente;
+    struct _nodo *siguiente;
 }nodo;
 
 nodo* inicLista();
