@@ -48,6 +48,24 @@ nodo * agregarPpio (nodo * lista, nodo * nuevoNodo)
     return lista;
 }
 
+void agregarAlPrincipioConPunteroDoble(nodo ** pLista, nodo * nuevo)
+{
+    if(*pLista==NULL)
+    {
+        *pLista=nuevo;
+    }else
+    {
+        nuevo->siguiente=*pLista;
+        *pLista=nuevo;
+    }
+}
+
+void agregarAlPrincipioConPunteroDoble(nodo ** pLista, nodo * nuevo)
+{
+    nuevo->siguiente=*pLista;
+    *pLista=nuevo;
+}
+
 void mostrarNodo(nodo * aux)
 {
     mostrarPersona(aux->dato);
@@ -56,6 +74,16 @@ void mostrarNodo(nodo * aux)
 void recorrerYmostrar(nodo * lista)
 {
     nodo * seg = lista;
+    while (seg != NULL)
+    {
+        mostrarNodo(seg);
+        seg= seg->siguiente;
+    }
+}
+
+void recorrerYmostrar2(nodo ** lista)
+{
+    nodo * seg = *lista;
     while (seg != NULL)
     {
         mostrarNodo(seg);
@@ -201,6 +229,34 @@ nodo * borrarTodaLaLista(nodo * lista)
     return seg; // retorna NULL a la variable lista del main()
 }
 
+nodo * desvincularPrimerNodo(nodo ** pLista)
+{
+    nodo * aux=*pLista;
+    if(*pLista)
+    {
+        *pLista=(*pLista)->siguiente;
+
+        aux->siguiente=NULL;
+
+    }
+    return aux;
+}
+
+
+nodo * invertirLista(nodo * lista)
+{
+    nodo * aux;
+    nodo * listaInvertida =inicLista();
+
+    while(lista!=NULL)
+    {
+        aux=desvincularPrimerNodo(&lista);
+
+        listaInvertida=agregarPpio(listaInvertida, aux);
+    }
+
+    return listaInvertida;
+}
 
 
 int main()
@@ -226,7 +282,7 @@ int main()
     recorrerYmostrar(lista);
 
 
-    free(lista);
+
 
     return 0;
 }
