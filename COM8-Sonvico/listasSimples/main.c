@@ -37,6 +37,29 @@ nodo * agregarPpio(nodo * lista, nodo * nuevoNodo)
     return lista;
 }
 
+nodo * agregarPpioOtro(nodo * lista, nodo * nuevoNodo)
+{
+
+    nuevoNodo->siguiente = lista;
+
+    return nuevoNodo;
+}
+
+
+
+void agregarPpioPunteroDoble(nodo ** plista, nodo * nuevo)
+{
+    if(*plista!=NULL)
+    {
+        *plista=nuevo;
+    }
+    else
+    {
+        nuevo->siguiente = *plista;
+        *plista = nuevo;
+    }
+}
+
 
 void mostrarNodo(nodo * aux)
 {
@@ -47,6 +70,18 @@ void mostrarNodo(nodo * aux)
 void recorrerYmostrar(nodo * lista)
 {
     nodo * seg = lista;
+    while (seg != NULL)
+    {
+        mostrarNodo(seg);
+        seg= seg->siguiente;
+    }
+}
+
+///#define Lista nodo *
+
+void recorrerYmostrarConPunteroDoble(nodo * * plista)
+{
+    nodo * seg = *plista;
     while (seg != NULL)
     {
         mostrarNodo(seg);
@@ -216,10 +251,24 @@ nodo * desvincularPrimero(nodo * * plista)
 }
 
 
+/// funcion de ejemplo vista en clases
+
+void punteroDoble(nodo * * plista)
+{
+    nodo * primero;
+    if(*plista!=NULL)
+    {
+        primero=*plista;
+        *plista=(*plista)->siguiente;
+        free(primero);
+    }
+}
+
+
+
 int main()
 {
     printf("Hello listas!\n");
-
 
     nodo * lista;
 
