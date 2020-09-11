@@ -32,6 +32,7 @@ nodo * agregarPpio(nodo * lista, nodo * nuevoNodo)
     else
     {
         nuevoNodo->siguiente = lista;
+
         lista = nuevoNodo;
     }
     return lista;
@@ -189,6 +190,7 @@ nodo * agregarEnOrden(nodo * lista, nodo * nuevoNodo)
             }
 
             ante->siguiente=nuevoNodo;
+
             nuevoNodo->siguiente=seg;
         }
     }
