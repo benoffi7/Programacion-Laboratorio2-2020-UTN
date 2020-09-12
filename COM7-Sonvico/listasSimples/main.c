@@ -43,9 +43,19 @@ nodo * agregarPpio (nodo * lista, nodo * nuevoNodo)
 ///si la lista no está vacía, inserta el nuevo nodo al comienzo de la //misma, y el viejo primer nodo pasa a ser el segundo de la lista.
     {
         nuevoNodo->siguiente = lista;
+
+
         lista = nuevoNodo;
     }
     return lista;
+}
+
+nodo * agregarPpioOtro (nodo * lista, nodo * nuevoNodo)
+{
+
+    nuevoNodo->siguiente = lista;
+
+    return nuevoNodo;
 }
 
 void agregarAlPrincipioConPunteroDoble(nodo ** pLista, nodo * nuevo)
@@ -60,7 +70,7 @@ void agregarAlPrincipioConPunteroDoble(nodo ** pLista, nodo * nuevo)
     }
 }
 
-void agregarAlPrincipioConPunteroDoble(nodo ** pLista, nodo * nuevo)
+void agregarAlPrincipioConPunteroDobleOtro(nodo ** pLista, nodo * nuevo)
 {
     nuevo->siguiente=*pLista;
     *pLista=nuevo;
@@ -68,6 +78,7 @@ void agregarAlPrincipioConPunteroDoble(nodo ** pLista, nodo * nuevo)
 
 void mostrarNodo(nodo * aux)
 {
+    printf("\n %p --->siguiente: %p\n", aux, aux->siguiente);
     mostrarPersona(aux->dato);
 }
 
@@ -267,14 +278,17 @@ int main()
     persona aux1= {"pepe grillo", 23};
     persona aux2= {"maria perez", 31};
     persona aux3= {"bart simpson", 10};
+    persona aux4= {"homer simpson", 39};
 
     ///  variable estática definida en el main()
     nodo * lista=inicLista();
 
 
-    lista=agregarPpio(lista, crearNodo(aux1));
-    lista=agregarPpio(lista, crearNodo(aux2));
-    lista=agregarPpio(lista, crearNodo(aux3));
+    lista=agregarFinal(lista, crearNodo(aux1));
+    lista=agregarFinal(lista, crearNodo(aux2));
+    lista=agregarFinal(lista, crearNodo(aux3));
+    lista=agregarFinal(lista, crearNodo(aux4));
+
 
 
 

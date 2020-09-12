@@ -6,8 +6,9 @@
 	<stdio.h>
 	<stdlib.h>
 
-1599242859 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\listassimples\main.c
+1599849240 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\listassimples\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"persona.h"
 

@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1599252970 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com8-sonvico\listassimples\main.c
+1599694364 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com8-sonvico\listassimples\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"persona.h"
 
 1599253009 c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com8-sonvico\listassimples\persona.h

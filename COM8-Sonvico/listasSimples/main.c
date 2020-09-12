@@ -32,20 +32,57 @@ nodo * agregarPpio(nodo * lista, nodo * nuevoNodo)
     else
     {
         nuevoNodo->siguiente = lista;
+
         lista = nuevoNodo;
     }
     return lista;
 }
 
+nodo * agregarPpioOtro(nodo * lista, nodo * nuevoNodo)
+{
+
+    nuevoNodo->siguiente = lista;
+
+    return nuevoNodo;
+}
+
+
+
+void agregarPpioPunteroDoble(nodo ** plista, nodo * nuevo)
+{
+    if(*plista!=NULL)
+    {
+        *plista=nuevo;
+    }
+    else
+    {
+        nuevo->siguiente = *plista;
+        *plista = nuevo;
+    }
+}
+
 
 void mostrarNodo(nodo * aux)
 {
+    printf("\n %p ----->siguiente: %p\n ", aux, aux->siguiente);
     mostrarPersona(aux->dato);
 }
 
 void recorrerYmostrar(nodo * lista)
 {
     nodo * seg = lista;
+    while (seg != NULL)
+    {
+        mostrarNodo(seg);
+        seg= seg->siguiente;
+    }
+}
+
+///#define Lista nodo *
+
+void recorrerYmostrarConPunteroDoble(nodo * * plista)
+{
+    nodo * seg = *plista;
     while (seg != NULL)
     {
         mostrarNodo(seg);
@@ -153,24 +190,82 @@ nodo * agregarEnOrden(nodo * lista, nodo * nuevoNodo)
             }
 
             ante->siguiente=nuevoNodo;
+
             nuevoNodo->siguiente=seg;
         }
     }
     return lista;
 }
 
-nodo * borrarTodaLaLista(nodo * lista) {
-   nodo * proximo;
-   nodo * seg;
-   seg = lista;
-   while(seg != NULL) {
-      proximo = seg->siguiente;  //tomo la dir del siguiente.
-      free(seg);                 //borro el actual.
-      seg = proximo;             //actualizo el actual con la dir del
-                                 //siguiente, para avanzar.
-   }
-   return seg; // retorna NULL a la variable lista del main()
+nodo * borrarTodaLaLista(nodo * lista)
+{
+    nodo * proximo;
+    nodo * seg;
+    seg = lista;
+    while(seg != NULL)
+    {
+        proximo = seg->siguiente;  //tomo la dir del siguiente.
+        free(seg);                 //borro el actual.
+        seg = proximo;             //actualizo el actual con la dir del
+        //siguiente, para avanzar.
+    }
+    return seg; // retorna NULL a la variable lista del main()
 }
+
+nodo * subprogramaIngresaPersonaEnLista(nodo * lista, persona p)
+{
+    lista = agregarEnOrden(lista, crearNodo(p));
+
+    return lista;
+}
+
+nodo * cargarListaDesdeArchivo(char nombre[], nodo * lista)
+{
+    FILE * archi =fopen(nombre, "rb");
+    persona aux;
+
+    if(archi!=NULL)
+    {
+        while(fread(&aux, sizeof(persona), 1, archi)>0)
+        {
+            lista=subprogramaIngresaPersonaEnLista(lista, aux);
+        }
+
+        fclose(archi);
+    }
+    return lista;
+}
+
+nodo * desvincularPrimero(nodo * * plista)
+{
+    nodo * primero=NULL;
+
+    if(*plista!=NULL)
+    {
+        primero=*plista;
+
+        *plista=(*plista)->siguiente;
+
+        primero->siguiente=NULL;
+    }
+
+    return primero;
+}
+
+
+/// funcion de ejemplo vista en clases
+
+void punteroDoble(nodo * * plista)
+{
+    nodo * primero;
+    if(*plista!=NULL)
+    {
+        primero=*plista;
+        *plista=(*plista)->siguiente;
+        free(primero);
+    }
+}
+
 
 
 int main()
@@ -179,6 +274,8 @@ int main()
 
     nodo * lista;
 
+    char nombreArchivo[]="personas.dat";
+
     persona aux1= {"pepe", 23};
     persona aux2= {"maria", 34};
     persona aux3= {"jose", 30};
@@ -186,10 +283,9 @@ int main()
 
     lista=inicLista();
 
-    lista=agregarPpio(lista, crearNodo(aux1));
-    lista=agregarPpio(lista, crearNodo(aux2));
-    lista=agregarPpio(lista, crearNodo(aux3));
+    lista=cargarListaDesdeArchivo(persona, lista);
 
+    nodo * libre=desvincularPrimero(&lista);
 
     recorrerYmostrar(lista);
 
