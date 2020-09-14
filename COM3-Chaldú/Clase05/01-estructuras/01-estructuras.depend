@@ -1,0 +1,133 @@
+# depslib dependency file v1.0
+1599398768 source:d:\developer\c\2020-2 - comision 2\01-estructuras\empleados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"archivoEmpleados.h"
+	"empleados.h"
+
+1597424965 d:\developer\c\2020-2 - comision 2\01-estructuras\empleados.h
+
+1599487537 source:d:\developer\c\2020-2 - comision 2\01-estructuras\main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleados.h"
+	"archivoEmpleados.h"
+	"listaEmpleados.h"
+	"registroArchivo.h"
+
+1597427005 source:d:\developer\c\2020-2 - comision 2\01-estructuras\archivoempleados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"empleados.h"
+	"archivoEmpleados.h"
+
+1597426989 d:\developer\c\2020-2 - comision 2\01-estructuras\archivoempleados.h
+	"empleados.h"
+
+1599490987 source:d:\developer\c\2020-2 - comision 2\01-estructuras\listaempleados.c
+	"listaEmpleados.h"
+
+1599490987 d:\developer\c\2020-2 - comision 2\01-estructuras\listaempleados.h
+	<stdio.h>
+	<malloc.h>
+	"empleados.h"
+
+1491400449 source:d:\developer\c\2020-2 - comision 2\01-estructuras\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1571670222 source:d:\developer\c\2020-2 - comision 2\01-estructuras\utilidades.c
+	"utilidades.h"
+
+1571670228 d:\developer\c\2020-2 - comision 2\01-estructuras\utilidades.h
+	<stdlib.h>
+	<stdio.h>
+
+1599398645 source:d:\developer\c\2020-2 - comision 2\01-estructuras\registroarchivo.c
+	"registroArchivo.h"
+
+1599398809 d:\developer\c\2020-2 - comision 2\01-estructuras\registroarchivo.h
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<windows.h>
+	<conio.h>
+	<time.h>
+	<string.h>
+	"empleados.h"
+	"utilidades.h"
+	"gotoxy.h"
+
+1491399894 d:\developer\c\2020-2 - comision 2\01-estructuras\gotoxy.h
+
+1597427005 source:d:\developer\c\2020-2 - comision 3\01-estructuras\archivoempleados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"empleados.h"
+	"archivoEmpleados.h"
+
+1597424965 d:\developer\c\2020-2 - comision 3\01-estructuras\empleados.h
+
+1597426989 d:\developer\c\2020-2 - comision 3\01-estructuras\archivoempleados.h
+	"empleados.h"
+
+1599398768 source:d:\developer\c\2020-2 - comision 3\01-estructuras\empleados.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"archivoEmpleados.h"
+	"empleados.h"
+
+1491400449 source:d:\developer\c\2020-2 - comision 3\01-estructuras\gotoxy.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
+1599657075 source:d:\developer\c\2020-2 - comision 3\01-estructuras\listaempleados.c
+	"listaEmpleados.h"
+
+1599656723 d:\developer\c\2020-2 - comision 3\01-estructuras\listaempleados.h
+	<stdio.h>
+	<malloc.h>
+	"empleados.h"
+
+1599656741 source:d:\developer\c\2020-2 - comision 3\01-estructuras\main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleados.h"
+	"archivoEmpleados.h"
+	"listaEmpleados.h"
+	"registroArchivo.h"
+
+1599398809 d:\developer\c\2020-2 - comision 3\01-estructuras\registroarchivo.h
+	<stdlib.h>
+	<stdio.h>
+	<ctype.h>
+	<windows.h>
+	<conio.h>
+	<time.h>
+	<string.h>
+	"empleados.h"
+	"utilidades.h"
+	"gotoxy.h"
+
+1571670228 d:\developer\c\2020-2 - comision 3\01-estructuras\utilidades.h
+	<stdlib.h>
+	<stdio.h>
+
+1491399894 d:\developer\c\2020-2 - comision 3\01-estructuras\gotoxy.h
+
+1599398645 source:d:\developer\c\2020-2 - comision 3\01-estructuras\registroarchivo.c
+	"registroArchivo.h"
+
+1571670222 source:d:\developer\c\2020-2 - comision 3\01-estructuras\utilidades.c
+	"utilidades.h"
+
