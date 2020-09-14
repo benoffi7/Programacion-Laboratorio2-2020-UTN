@@ -270,6 +270,46 @@ nodo * invertirLista(nodo * lista)
 }
 
 
+nodo * borrarNodosSegunParametro(nodo * lista, int edadFiltro)
+{
+    nodo * aux, seg, ante;
+    if(lista)
+    {
+        while (lista!=NULL && lista->dato.edad<edadFiltro)
+        {
+            aux=lista;
+            lista=lista->siguiente;
+            free(aux);
+        }
+
+        ante=lista;
+        seg=lista->siguiente;
+
+        while(seg!=NULL) /// tenemos que recorrer toda la lista
+        {
+            if(seg->dato.edad<edadFiltro) /// si el dato es, hacemos el salteo y borrado
+            {
+                aux=seg;
+                ante->siguiente=seg->siguiente;
+                seg=seg->siguiente;
+                free(aux);
+            }
+            else /// si no es, avanzamos en la lista
+            {
+                ante=seg;
+                seg=seg->siguiente;
+            }
+            /// podriamos hacer
+            /// seg=seg->siguiente;
+            /// fuera del if-else
+
+        }
+
+    }
+    return lista;
+}
+
+
 int main()
 {
     printf("Hello listas!\n");
