@@ -81,7 +81,38 @@ nodoDoble * agregaEnOrden(nodoDoble * lista, nodoDoble * nuevo)
             }
         }
     }
+    return lista;
+}
 
+nodoDoble * borrarUnNodo(nodoDoble * lista, int dato)
+{
+    nodoDoble * aux;
+    if(lista)
+    {
+        if(lista->dato==dato)
+        {
+
+            /// elimina primer nodo (la que hizo Tomas)
+            aux=lista;
+            lista=lista->siguiente;
+            if(lista)
+            {
+                lista->anterior=NULL;
+            }
+            free(aux);
+        }
+        else
+        {
+            /// buscar el nodo a borrar (se puede hacer una fn)
+            /// y redireccionar los enlaces segun caso
+
+
+
+
+
+
+        }
+    }
 
     return lista;
 }
