@@ -39,19 +39,23 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="empleados.h" />
+		<Unit filename="fila.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="fila.h" />
 		<Unit filename="gotoxy.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="gotoxy.h" />
+		<Unit filename="lista2.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="lista2.h" />
 		<Unit filename="listaEmpleados.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="listaEmpleados.h" />
 		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="nodo2.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="pila.c">

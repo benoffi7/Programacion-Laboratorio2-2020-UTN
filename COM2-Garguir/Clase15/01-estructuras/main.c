@@ -4,6 +4,7 @@
 #include "archivoEmpleados.h"
 #include "listaEmpleados.h"
 #include "lista2.h"
+#include "fila.h"
 #include "pila.h"
 #include "registroArchivo.h"
 
@@ -29,6 +30,8 @@ int main()
 
     Pila pila;
     inicPila(&pila);
+
+    Fila filaEmpleados;
 
     char opcion;
 
