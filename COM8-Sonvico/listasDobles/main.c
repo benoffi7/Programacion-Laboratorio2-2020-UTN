@@ -108,6 +108,48 @@ nodoDoble * agregarEnOrdenDoble(nodoDoble * lista, nodoDoble * nuevo)
     return lista;
 }
 
+nodoDoble * borrarNodoDoble(nodoDoble * lista, int dato)
+{
+    nodoDoble * aux;
+
+    if(lista)
+    {
+        if(lista->dato==dato)
+        {
+            aux = lista;
+            lista = lista->siguiente;
+            if(lista)
+            {
+                lista->anterior=NULL;
+            }
+            free(aux);
+        }
+        else
+        {
+            nodoDoble *seg=lista->siguiente;
+
+            while((seg != NULL) && seg->dato!=dato))
+            {
+                seg = seg->siguiente; //avanzo al siguiente nodo.
+            }
+            if( seg!= NULL)
+            {
+                nodoDoble * ante=seg->anterior;
+                nodoDoble * proximo=seg->siguiente;
+
+                ante->siguiente = seg->siguiente;
+                if(proximo)
+                {
+                    proximo->anterior=ante;
+                }
+                free(seg);
+            }
+        }
+
+    }
+    return lista;
+}
+
 
 int main()
 {
