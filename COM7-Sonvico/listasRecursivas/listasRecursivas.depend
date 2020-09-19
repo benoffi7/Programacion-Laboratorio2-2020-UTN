@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1442929475 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\listasrecursivas\lista.c
+	"lista.h"
+
+1378918410 c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\listasrecursivas\lista.h
+	<stdio.h>
+	<stdlib.h>
+
+1600453122 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\listasrecursivas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"lista.h"
+
