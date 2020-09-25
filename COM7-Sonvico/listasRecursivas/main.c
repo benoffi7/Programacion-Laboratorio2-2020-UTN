@@ -7,6 +7,8 @@
 void mostrarRecursiva(nodo * lista);
 int sumaRecursiva(nodo * lista);
 nodo * cargaListaRandom(nodo * lista, int cant);
+nodo * borraUnNodo(nodo * lista, int dato);
+nodo * agregarEnOrden(nodo * lista, nodo * nuevo);
 
 int main()
 {
@@ -23,6 +25,44 @@ int main()
     return 0;
 }
 
+nodo * borraUnNodo(nodo * lista, int dato)
+{
+    if(lista)
+    {
+        if(lista->dato==dato)
+        {
+             nodo * aux=lista;
+             lista=lista->siguiente;
+             free(aux);
+        }
+        else
+        {
+            lista->siguiente=borraUnNodo(lista->siguiente, dato);
+        }
+    }
+    return lista;
+}
+
+nodo * agregarEnOrden(nodo * lista, nodo * nuevo)
+{
+    if(!lista)
+    {
+        lista=nuevo;
+    }
+    else
+    {
+        if(nuevo->dato<lista->dato)
+        {
+            nuevo->siguiente=lista;
+            lista=nuevo;
+        }
+        else
+        {
+            lista->siguiente=agregarEnOrden(lista->siguiente, nuevo);
+        }
+    }
+    return lista;
+}
 
 void mostrarRecursiva(nodo * lista)
 {

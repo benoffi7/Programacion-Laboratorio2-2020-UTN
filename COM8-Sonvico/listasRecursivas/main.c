@@ -16,7 +16,7 @@ int main()
 
     nodo * lista=inicLista();
 
-   lista= cargaListaRandom(lista, 20);
+    lista= cargaListaRandom(lista, 20);
 
     mostrarRecursiva(lista);
 
@@ -28,7 +28,7 @@ int main()
 
 nodo * cargaListaRandom(nodo * lista, int cant)
 {
-    for(int i=0;i<cant; i++)
+    for(int i=0; i<cant; i++)
     {
         lista=agregarEnOrden(lista, crearNodo(rand()%1000));
     }
@@ -59,14 +59,99 @@ int sumaRecursiva(nodo * lista)
         /// suma=A[i] + sumaRecursivaDelArreglo(A, validos, i+1);
         suma=lista->dato+sumaRecursiva(lista->siguiente);
     }
+    return suma;
+}
+
+/// codigo de Ana
+int sumarLista(nodo* lista)
+{
+    int suma = 0;
+
+    if(lista != NULL)
+    {
+        suma = lista->dato + sumarLista(lista->siguiente);
+    }
 
     return suma;
-
 }
+
 
 int sumaRecursivaTernaria(nodo * lista)
 {
     int suma=0;
     return (!lista) ? suma : lista->dato+sumaRecursivaTernaria(lista->siguiente);
+}
+
+/// codigo de samuel
+void mostrarPosParRecursivo(nodo*lista)
+{
+    nodo*aux=lista;
+    if(aux!=NULL)
+    {
+        printf("%i -",aux->dato);
+        aux=aux->siguiente;
+        if(aux!=NULL)
+        {
+            mostrarPosParRecursivo(aux->siguiente);
+        }
+    }
+}
+
+nodo* borrarNodoRec (nodo*lista, int dato)
+{
+    if (lista)
+    {
+        if (lista->dato == dato)
+        {
+            nodo* aux = lista;
+            lista = lista->siguiente;
+            free (aux);
+        }
+        else
+        {
+            lista->siguiente = borrarNodoRec (lista->siguiente,dato);
+        }
+    }
+    return lista;
+}
+
+nodo * agregarEnOrdenRec(nodo * lista, nodo * nuevo)
+{
+    if(!lista)  /// lista==NULL
+    {
+        lista=nuevo;
+    }
+    else
+    {
+        if(nuevo->dato<lista->dato)
+        {
+            nuevo->siguiente=lista;
+            lista=nuevo;
+        }
+        else
+        {
+            lista->siguiente=agregarEnOrdenRec(lista->siguiente, nuevo);
+        }
+    }
+
+    return lista;
+}
+
+
+nodo*invertirListaRecursivoFafafa(nodo*lista)
+{
+    nodo*aux;
+    nodo*invertida=NULL;
+    if(lista!=NULL)
+    {
+        aux=lista;
+        lista=lista->siguiente;
+
+        aux->siguiente=NULL;///aislamiento social del primer nodo.
+
+        invertida=agregarAlPrincipio(invertida,aux);
+        ///falta la llamada recursiva.
+    }
+    return invertida;
 }
 
