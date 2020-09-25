@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1601078077 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com8-sonvico\listasdobles\main.c
+	<stdio.h>
+	<stdlib.h>
+

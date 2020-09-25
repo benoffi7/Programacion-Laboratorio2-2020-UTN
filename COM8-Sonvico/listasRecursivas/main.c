@@ -137,15 +137,32 @@ nodo * agregarEnOrdenRec(nodo * lista, nodo * nuevo)
     return lista;
 }
 
+nodo * invertirListaRecursivoPosta (nodo*lista)
+{
+    nodo * aux;
+    if(lista)
+    {
+        aux=lista;
 
-nodo*invertirListaRecursivoFafafa(nodo*lista)
+        lista=lista->siguiente;
+
+        aux->siguiente=NULL;
+
+        lista=agregarFinal(invertirListaRecursivoPosta(lista), aux);
+    }
+
+    return lista;
+}
+
+
+nodo * invertirListaRecursivoFafafa(nodo*lista)
 {
     nodo*aux;
     nodo*invertida=NULL;
     if(lista!=NULL)
     {
         aux=lista;
-        lista=lista->siguiente;
+
 
         aux->siguiente=NULL;///aislamiento social del primer nodo.
 
