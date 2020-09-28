@@ -43,7 +43,7 @@ void eliminarCentral(nodoD** lista)
         }
         else
         {
-            while (pri != ult && ult->ant != pri) /// (pri!=ult || pri->sig != ult)
+            while (pri != ult && ult->ant != pri) /// (pri!=ult && pri->sig != ult)
             {
                 pri=pri->sig;
                 ult=ult->ant;
