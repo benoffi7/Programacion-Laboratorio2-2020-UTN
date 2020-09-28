@@ -8,9 +8,9 @@ typedef struct nodoD
     struct nodoD* sig;
 };
 
-/*2. Crear una función recursiva que determine si una lista doblemente
-vinculada es capicúa. (Después de ver recursividad)*/
-/**Resolución lógica durante la clase, (chequear PNG adjuntado en la misma carpeta de git)**/
+/*2. Crear una funciÃ³n recursiva que determine si una lista doblemente
+vinculada es capicÃºa. (DespuÃ©s de ver recursividad)*/
+/**ResoluciÃ³n lÃ³gica durante la clase, (chequear PNG adjuntado en la misma carpeta de git)**/
 
 /*3. Dada una lista doblemente enlazada ordenada de enteros, eliminar el
 nodo que se encuentra en el punto medio de la lista, si la cantidad de
@@ -43,7 +43,7 @@ void eliminarCentral(nodoD** lista)
         }
         else
         {
-            while (pri != ult || ult->ant != pri) /// (pri!=ult || pri->sig != ult)
+            while (pri != ult && ult->ant != pri) /// (pri!=ult || pri->sig != ult)
             {
                 pri=pri->sig;
                 ult=ult->ant;
