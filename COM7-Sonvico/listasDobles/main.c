@@ -117,6 +117,75 @@ nodoDoble * borrarUnNodo(nodoDoble * lista, int dato)
     return lista;
 }
 
+int capicuaRecursivo(nodoDoble * inicio, nodoDoble * fin)
+{
+    int capicua;
+    if(inicio && fin)  /// inicio!=NULL && fin!=NULL
+    {
+        if(inicio->dato!=fin->dato) /// 1er cc
+        {
+            capicua=0; /// 1er st
+        }
+        else
+        {
+            if (inicio==fin || inicio==fin->siguiente)/// 2da cc
+            {
+                capicua=1; /// 2da st
+            }
+            else
+            {
+                capicua=capicuaRecursivo(inicio->siguiente, fin->anterior);
+            }
+        }
+    }
+    return capicua;
+}
+
+/// codificar fn buscarUltimo
+nodoDoble * eliminaPuntoMedio(nodoDoble * lista)
+{
+    nodoDoble * aBorrar;
+
+    if(lista)
+    {
+        if(lista->siguiente==NULL)
+        {
+            aBorrar=lista;
+            lista=lista->siguiente;
+            free(aBorrar);
+        }
+        else
+        {
+            nodoDoble * inicio=lista;
+            nodoDoble * fin=buscarUltimo(lista);
+
+            while(inicio!=fin && fin->siguiente!=inicio)
+            {
+                inicio=inicio->siguiente;
+                fin=fin->anterior;
+            }
+
+           aBorrar=inicio;
+
+           nodoDoble * ante=aBorrar->anterior;
+
+           ante->siguiente=aBorrar->siguiente;
+
+           if(aBorrar->siguiente!=NULL)
+           {
+               nodoDoble * sig=aBorrar->siguiente;
+
+               sig->anterior=ante;
+           }
+           free(aBorrar);
+        }
+    }
+    return lista;
+}
+
+
+
+
 int main()
 {
     printf("Hello world!\n");
