@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1601901257 source:c:\users\mariana\desktop\marian\utn\ayudantia prog ii\resolucionparcialhp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

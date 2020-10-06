@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1601900508 source:c:\users\gsonv\documents\primerparciallab2\estudiante.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"estudiante.h"
+
+1601900508 c:\users\gsonv\documents\primerparciallab2\estudiante.h
+
+1601903691 source:c:\users\gsonv\documents\primerparciallab2\listaestudiantes.c
+	<stdio.h>
+	<stdlib.h>
+	"listaEstudiantes.h"
+
+1601902459 c:\users\gsonv\documents\primerparciallab2\listaestudiantes.h
+	"estudiante.h"
+
+1601903709 source:c:\users\gsonv\documents\primerparciallab2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"listaEstudiantes.h"
+	"Pila.h"
+
+1601902507 c:\users\gsonv\documents\primerparciallab2\pila.h
+	<stdio.h>
+	<stdlib.h>
+	"listaEstudiantes.h"
+
+1601903505 source:c:\users\gsonv\documents\primerparciallab2\pila.c
+	"Pila.h"
+
