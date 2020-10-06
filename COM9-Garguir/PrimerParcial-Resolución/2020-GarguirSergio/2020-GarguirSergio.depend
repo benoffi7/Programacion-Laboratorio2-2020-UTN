@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1601680985 source:d:\developer\c\2020-garguirsergio\lista2.c
+	"lista2.h"
+
+1601680304 d:\developer\c\2020-garguirsergio\lista2.h
+	<stdio.h>
+	<malloc.h>
+	<string.h>
+	"persona.h"
+
+1601422170 d:\developer\c\2020-garguirsergio\persona.h
+
+1601422158 source:d:\developer\c\2020-garguirsergio\persona.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"persona.h"
+
+1601681306 source:d:\developer\c\2020-garguirsergio\fila.c
+	"fila.h"
+
+1601681268 d:\developer\c\2020-garguirsergio\fila.h
+	<stdio.h>
+	<stdlib.h>
+	"lista2.h"
+
+1601681524 source:d:\developer\c\2020-garguirsergio\lista.c
+	"lista.h"
+
+1601680985 d:\developer\c\2020-garguirsergio\lista.h
+	<stdio.h>
+	<malloc.h>
+	<string.h>
+	"persona.h"
+
+1601681488 source:d:\developer\c\2020-garguirsergio\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+	"fila.h"
+

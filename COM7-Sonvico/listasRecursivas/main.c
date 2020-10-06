@@ -64,6 +64,36 @@ nodo * agregarEnOrden(nodo * lista, nodo * nuevo)
     return lista;
 }
 
+nodo * invertirListaR(nodo * lista)
+{
+    nodo * aux;
+    if(lista)
+    {
+        aux=lista;
+
+        lista=lista->siguiente;
+
+        aux->siguiente=NULL;
+
+        lista=agregarFinal(invertirListaR(lista), aux);
+    }
+
+    return lista;
+}
+
+/// Codigo de Franco
+nodo * invertirListaRecursiva(nodo *lista)
+{
+    if(lista)
+    {
+        nodo *aux = lista;
+        lista = invertirListaRecursiva(lista->siguiente);
+        aux->siguiente = NULL;
+        lista = agregarFinal(lista, aux);
+    }
+    return lista;
+}
+
 void mostrarRecursiva(nodo * lista)
 {
     if(lista)
