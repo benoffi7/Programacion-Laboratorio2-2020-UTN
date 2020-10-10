@@ -27,7 +27,7 @@ stCliente primero(Fila* fila){
 }
 
 stCliente primeroPro(Fila* fila){
-    return verPrimero(fila->inicio);
+    return verPrimero2(fila->inicio);
 }
 
 stCliente extraer(Fila* fila){

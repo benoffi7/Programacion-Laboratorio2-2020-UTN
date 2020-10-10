@@ -6,6 +6,7 @@ nodo2* inicLista2(){
 
 nodo2* crearNodo2(stCliente dato){
     nodo2* nuevo = (nodo2*) malloc(sizeof(nodo2));
+
     nuevo->dato = dato;
     nuevo->anterior = NULL;
     nuevo->siguiente = NULL;

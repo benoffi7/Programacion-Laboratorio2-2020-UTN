@@ -414,7 +414,7 @@ void pila2lista(PilaCli p, nodo** lista){
         c = topeCliente(&p);
         if(atoi(c.persona.dni)%2==0){
             (*lista)=agregarAlFinal((*lista), crearNodo(c));
-            (*lista)=agregarAlPrincipio((*lista))
+            (*lista)=agregarAlPrincipio((*lista), crearNodo(c));
         }
         apilarCliente(&aux, desapilarCliente(&p));
     }

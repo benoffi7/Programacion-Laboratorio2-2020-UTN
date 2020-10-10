@@ -45,9 +45,9 @@ void muestraLista(nodo* lista){
     }
 }
 
-void muestaListaRecursiva(nodo* lista){
+void muestraListaRecursiva(nodo* lista){
     if(lista){
-        muestraNodo(lista->dato);
+        muestraNodo(lista);
         muestraListaRecursiva(lista->siguiente);
     }
 }
@@ -71,7 +71,7 @@ int sumaListaRecursivaPro(nodo* lista){
     return rta;
 }
 
-int sumaListaRecursivaSuperPro(){
+int sumaListaRecursivaSuperPro(nodo* lista){
     return (lista)?lista->dato.id+sumaListaRecursivaSuperPro(lista->siguiente):0;
 }
 
@@ -132,11 +132,11 @@ nodo* agregarEnOrdenDNI(nodo* lista, nodo* nuevo){
     return lista;
 }
 
-void agregarEnOrdenDNI(nodo** lista, nodo* nuevo){
+void agregarEnOrdenDNIPD(nodo** lista, nodo* nuevo){
     if((*lista)==NULL){
         (*lista)=nuevo;
     }else{
-        if(atoi(nuevo->dato.persona.dni)<atoi(lista->dato.persona.dni)){
+        if(atoi(nuevo->dato.persona.dni)<atoi((*lista)->dato.persona.dni)){
             (*lista)=agregarAlPrincipio((*lista), nuevo);
         }else{
             nodo* ante = (*lista);
@@ -219,7 +219,7 @@ void mostrarPosPar(nodo* lista){
 void muestraPosParR (nodo *lista, int pos){
     if(lista!=NULL){
         if(pos%2==0){
-            mostrar(lista);
+            muestraNodo(lista);
         }
         muestraPosParR(lista->siguiente, pos+1);
     }
@@ -245,7 +245,7 @@ nodo * invertirRecursivo (nodo * lista)
         primero=lista;  // guardo el primero nodo
         lista=lista->siguiente;   // avanzo en la lista
         primero->siguiente=NULL;  // desvinculo el primero nodo
-        lista=agregarFinal(invertirRecursivo(lista),primero);
+        lista=agregarAlFinal(invertirRecursivo(lista),primero);
     }
     return lista;
 }
@@ -254,7 +254,7 @@ nodo * borrarNodoR( nodo * lista, int dato){
     nodo * aBorrar =NULL;
 
     if(lista){
-        if(lista->dato==dato){
+        if(lista->dato.id==dato){
             aBorrar=lista;
             lista=lista->siguiente;
             free(aBorrar);
@@ -269,7 +269,7 @@ nodo* insertarEnOrdenR(nodo * lista, nodo * nuevo){
     if(!lista){
         lista=nuevo;
     }else{
-        if(nuevo->dato < lista->dato){
+        if(nuevo->dato.id < lista->dato.id){
             nuevo->siguiente = lista;
             lista = nuevo;
         }else{

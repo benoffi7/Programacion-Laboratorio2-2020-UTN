@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1600475363 source:d:\developer\c\2020-2 - comision 9\01-estructuras\main.c
+1602282865 source:d:\developer\c\2020-2 - comision 9\01-estructuras\main.c
 	<stdio.h>
 	<stdlib.h>
 	<conio.h>
@@ -45,10 +45,10 @@
 	<stdlib.h>
 	"stack.h"
 
-1600110068 source:d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.c
+1602282820 source:d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.c
 	"listaClientes.h"
 
-1600110063 d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.h
+1600815752 d:\developer\c\2020-2 - comision 9\01-estructuras\listaclientes.h
 	<stdio.h>
 	<malloc.h>
 	<string.h>
@@ -81,13 +81,13 @@
 
 1491399894 d:\developer\c\2020-2 - comision 9\01-estructuras\gotoxy.h
 
-1600296572 source:d:\developer\c\2020-2 - comision 9\01-estructuras\pilaclientes.c
+1601056346 source:d:\developer\c\2020-2 - comision 9\01-estructuras\pilaclientes.c
 	"pilaClientes.h"
 
 1599990342 d:\developer\c\2020-2 - comision 9\01-estructuras\pilaclientes.h
 	"listaClientes.h"
 
-1600475052 source:d:\developer\c\2020-2 - comision 9\01-estructuras\lista2.c
+1602109494 source:d:\developer\c\2020-2 - comision 9\01-estructuras\lista2.c
 	"lista2.h"
 
 1600475052 d:\developer\c\2020-2 - comision 9\01-estructuras\lista2.h
@@ -96,11 +96,19 @@
 	<string.h>
 	"cliente.h"
 
-1600475619 source:d:\developer\c\2020-2 - comision 9\01-estructuras\fila.c
+1602282722 source:d:\developer\c\2020-2 - comision 9\01-estructuras\fila.c
 	"fila.h"
 
-1600474871 d:\developer\c\2020-2 - comision 9\01-estructuras\fila.h
+1601079145 d:\developer\c\2020-2 - comision 9\01-estructuras\fila.h
 	<stdio.h>
 	<stdlib.h>
 	"lista2.h"
+
+1602109491 source:d:\developer\c\2020-2 - comision 9\01-estructuras\arbol.c
+	"arbol.h"
+
+1602110154 d:\developer\c\2020-2 - comision 9\01-estructuras\arbol.h
+	<stdio.h>
+	<stdlib.h>
+	"cliente.h"
 
