@@ -1,7 +1,7 @@
 #ifndef ARBOLBINARIO_H_INCLUDED
 #define ARBOLBINARIO_H_INCLUDED
 
-typedef tipoDato int;
+typedef int tipoDato;
 
 typedef struct nodoA
 {
