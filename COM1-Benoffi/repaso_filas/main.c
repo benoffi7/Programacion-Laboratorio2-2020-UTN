@@ -5,6 +5,7 @@
 typedef struct
 {
     nodo2 * inicio;
+    int cantidad;
     nodo2 * fin;
 }Fila;
 
@@ -24,10 +25,17 @@ int main()
     agregar(&filita,1);
     agregar(&filita,2);
     agregar(&filita,3);
+    agregar(&filita,0);
     mostrar(&filita);
     vaciarFila(&filita);
-
-    mostrar(&filita);
+    if (!filavacia(&filita))
+    {
+            mostrar(&filita);
+    }
+    else
+    {
+        printf("esta vacia\n");
+    }
     return 0;
 }
 
@@ -40,7 +48,9 @@ void inicFila(Fila * fila)
 void agregar(Fila * fila, int dato)
 {
     nodo2 * nuevoNodo = crearNodo(dato);
+
     fila->fin = agregarAlFinal(fila->fin, nuevoNodo);
+
     if (fila->inicio == NULL) //que pasa cuando esta vacia??
     {
         fila->inicio=fila->fin;
@@ -85,7 +95,7 @@ int filavacia(Fila * filita)
 
 void vaciarFila(Fila * filita)
 {
-    while (filavacia(filita) == 0)
+    while (!filavacia(filita))
     {
         int extraido = extraer(filita);
         printf("el extraido es ...%d\n",extraido);

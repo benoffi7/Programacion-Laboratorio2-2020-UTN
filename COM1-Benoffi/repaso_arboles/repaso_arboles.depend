@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1602598492 source:c:\users\benof\onedrive\documentos\github\programacion-laboratorio2-2020-utn\com1-benoffi\repaso_arboles\main.c
+	<stdio.h>
+	<stdlib.h>
+
