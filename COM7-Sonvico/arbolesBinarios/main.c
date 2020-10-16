@@ -29,14 +29,14 @@ nodoArbol * buscarUnNodo(nodoArbol * a, int dato)
     nodoArbol * buscado=NULL;
     if(a)
     {
-        if(a->dato==dato)
+        if(a->dato==dato) /// procesa la raiz
         {
             buscado=a;
         }
     }
     else
     {
-        if(dato>a->dato)
+        if(dato>a->dato)   /// evalua la jeraquia
         {
             buscado=buscarUnNodo(a->derecha, dato);
         }
@@ -117,6 +117,42 @@ void postOrden(nodoArbol * a)  ///  I D R
         printf(" %d", a->dato);
     }
 }
+
+int sumarArbol(nodoArbol * arbol)
+{
+    int rta;
+    if(!arbol)
+    {
+        rta=0;
+    }
+    else
+    {
+        rta=arbol->dato+sumarArbol(arbol->izquierda)+sumarArbol(arbol->derecha);
+    }
+    return rta;
+}
+
+int sumarArbolNodosPares(nodoArbol * arbol)
+{
+    int rta;
+    if(!arbol)
+    {
+        rta=0;
+    }
+    else
+    {
+        if(arbol->dato%2==0)
+        {
+             rta=arbol->dato+sumarArbolNodosPares(arbol->izquierda)+sumarArbolNodosPares(arbol->derecha);
+        }
+        else
+        {
+             rta=sumarArbolNodosPares(arbol->izquierda)+sumarArbolNodosPares(arbol->derecha);
+        }
+    }
+    return rta;
+}
+
 
 int main()
 {

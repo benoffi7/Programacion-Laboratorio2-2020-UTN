@@ -18,12 +18,20 @@ void preorder(nodoArbol * nodo);
 void inorder(nodoArbol * nodo);
 void postorder(nodoArbol * nodo);
 int existeNodo (nodoArbol * raiz, int dato);
+nodoArbol * nodoMasIzquierda(nodoArbol * nodo);
+nodoArbol * nodoMasDerecha(nodoArbol * nodo);
+nodoArbol * borrarNodo(nodoArbol * nodo, int dato);
 
 
 int main()
 {
     nodoArbol * raiz = inicArbol();
     raiz = cargarMuchos(raiz);
+    //nodoArbol * NMI = nodoMasIzquierda(raiz->der);
+    //nodoArbol * NMD = nodoMasDerecha(raiz->izq);
+    //printf("NMI %d\n",NMI->dato);
+    //printf("NMD %d\n",NMD->dato);
+    raiz = borrarNodo(raiz,4);
     mostrar(raiz);
     return 0;
 }
@@ -187,5 +195,72 @@ int esHoja(nodoArbol * arbol)
     }
 }
 
-//contar la cantidad de hojas HACER
-//con la base de mostrar, sumar todos los valores HACER
+nodoArbol * borrarNodo(nodoArbol * nodo, int dato)
+{
+    if (nodo == NULL)
+    {
+        //fin del arbol,rama u hoja
+    }
+    else // hay algo
+    {
+        if (nodo->dato == dato)
+        {
+            if (nodo->izq!=NULL)
+            {
+                nodoArbol * masDer = nodoMasDerecha(nodo->izq);//busco la MAYOR (DER) clave de los MENORES (IZQ)
+                //el 2 en nuestro ejemplo
+                nodo->dato = masDer->dato; //hago el reemplazo!
+                nodo->izq = borrarNodo(nodo->izq,masDer->dato); //volvemos a borrar pero la hoja que es más facil
+            }
+            else if (nodo->der!=NULL)
+            {
+                nodoArbol * masIzq = nodoMasIzquierda(nodo->der); //busco la MENOR (IZQ) clave de los MAYORES (DER)
+                //el 5 en nuestro ejemplo
+                nodo->dato = masIzq->dato;
+                nodo->der = borrarNodo(nodo->der,masIzq->dato); //volvemos a borrar pero la hoja que es más facil
+            }
+            else
+            {
+                if (esHoja(nodo)==1)
+                {
+                    free(nodo);
+                    nodo = NULL;
+                }
+            }
+        }
+        else if (dato > nodo->dato)
+        {
+            nodo->der = borrarNodo(nodo->der,dato);
+        }
+        else if (dato < nodo->dato)
+        {
+             nodo->izq = borrarNodo(nodo->izq,dato);
+        }
+    }
+    return nodo;
+}
+
+
+nodoArbol * nodoMasDerecha(nodoArbol * nodo)
+{
+    if (nodo!=NULL)
+    {
+        if (nodo->der!=NULL)
+        {
+            nodo = nodoMasDerecha(nodo->der);
+        }
+    }
+    return nodo;
+}
+
+nodoArbol * nodoMasIzquierda(nodoArbol * nodo)
+{
+    if (nodo!=NULL)
+    {
+        if (nodo->izq!=NULL)
+        {
+            nodo = nodoMasIzquierda(nodo->izq);
+        }
+    }
+    return nodo;
+}

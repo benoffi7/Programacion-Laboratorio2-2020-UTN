@@ -120,6 +120,41 @@ void postOrden (nodoArbol * a)  ///  I D R
     }
 }
 
+int sumarArbol(nodoArbol * arbol)
+{
+    int rta;
+    if(!arbol)
+    {
+        rta=0;
+    }
+    else
+    {
+        rta=arbol->dato+sumarArbol(arbol->izquierda)+sumarArbol(arbol->derecha);
+    }
+    return rta;
+}
+
+int sumarArbolValoresPares(nodoArbol * arbol)
+{
+    int rta;
+    if(!arbol)
+    {
+        rta=0;
+    }
+    else
+    {
+        if(arbol->dato%2==0)
+        {
+            rta=arbol->dato+sumarArbolValoresPares(arbol->izquierda)+sumarArbolValoresPares(arbol->derecha);
+        }
+        else
+        {
+             rta=sumarArbolValoresPares(arbol->izquierda)+sumarArbolValoresPares(arbol->derecha);
+        }
+    }
+    return rta;
+}
+
 int main()
 {
     printf("Hello arboles!\n");
