@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1602853646 source:d:\developer\c\2020-2 - comision 2\2020-arbol\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1602853646 source:d:\developer\c\2020-2 - comision 2\2020-arbol\arbol.c
+	"arbol.h"
+
+1602853704 d:\developer\c\2020-2 - comision 2\2020-arbol\arbol.h
+	<stdio.h>
+
