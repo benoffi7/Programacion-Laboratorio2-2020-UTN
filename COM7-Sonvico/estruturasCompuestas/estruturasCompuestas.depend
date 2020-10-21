@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1381699193 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\estruturascompuestas\lista.c
+	"lista.h"
+
+1603310899 c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\estruturascompuestas\lista.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1603310880 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\estruturascompuestas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
