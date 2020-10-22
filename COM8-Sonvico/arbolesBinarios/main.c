@@ -60,7 +60,8 @@ nodoArbol * insertaOrdenadoArbolDistintos(nodoArbol * a, nodoArbol * nuevo)
         {
             a->izquierda=insertaOrdenadoArbolDistintos(a->izquierda, nuevo);
 
-        } else if(nuevo->dato>a->dato)
+        }
+        else if(nuevo->dato>a->dato)
         {
             a->derecha=insertaOrdenadoArbolDistintos(a->derecha, nuevo);
         }
@@ -80,7 +81,8 @@ nodoArbol * insertaOrdenadoArbolCreandoNodo(nodoArbol * a, int dato)
         if(dato<a->dato)
         {
             a->izquierda=insertaOrdenadoArbolCreandoNodo(a->izquierda, dato);
-        } else
+        }
+        else
         {
             a->derecha=insertaOrdenadoArbolCreandoNodo(a->derecha, dato);
         }
@@ -149,11 +151,107 @@ int sumarArbolValoresPares(nodoArbol * arbol)
         }
         else
         {
-             rta=sumarArbolValoresPares(arbol->izquierda)+sumarArbolValoresPares(arbol->derecha);
+            rta=sumarArbolValoresPares(arbol->izquierda)+sumarArbolValoresPares(arbol->derecha);
         }
     }
     return rta;
 }
+
+/// este código lo hizo en parte Mati Mercado
+/*
+tree * searchLimb(tree * t, int legajo)
+{
+
+    tree * found = initTree();
+
+    if(t)
+    {
+        if(t->data.legajo == legajo) /// proceso raiz
+        {
+            found = t;
+        }
+        else
+        {
+           if(legajo > t->data.legajo)
+           {
+               found = searchLimb(t->right, legajo);
+           }
+           else
+           {
+               found = searchLimb(t->left, legajo);
+           }
+        }
+    }
+    return found;
+}
+*/
+/// estoy simulando la busqueda de un nombre
+
+nodoArbol * buscarPorNombre(nodoArbol * arbol, int nombre)
+{
+    nodoArbol * buscado = NULL;
+    if(arbol)
+    {
+        if(arbol->dato==nombre)  /// proceso raiz
+        {
+            buscado=arbol;
+        }
+        else
+        {
+            buscado=buscarPorNombre(arbol->izquierda, nombre);  /// me voy izq
+            if (!buscado)
+            {
+                buscado=buscarPorNombre(arbol->derecha, nombre);  /// me voy der
+            }
+        }
+    }
+    return buscado;
+}
+
+
+int cantidadDeNodos(nodoArbol *arbol)
+{
+    int rta;
+    if(!arbol)
+    {
+        rta=0;
+    }
+    else
+    {
+        rta=1+cantidadDeNodos(arbol->izquierda)+cantidadDeNodos(arbol->derecha);
+    }
+}
+
+int nodeQuant(tree * t)
+{
+    int total = 0;
+
+    if(t)
+    {
+        if(!t->left && !t->right)
+        {
+            total = 1;
+        }
+        else
+        {
+            if(t->left)
+            {
+                total = total + nodeQuant(t->left);
+            }
+            if(t->right)
+            {
+                total = total + nodeQuant(t->right);
+            }
+        }
+
+
+    }
+
+    return total;
+}
+
+
+
 
 int main()
 {
