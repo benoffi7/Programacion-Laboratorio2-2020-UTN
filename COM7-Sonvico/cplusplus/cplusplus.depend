@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1604688395 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\cplusplus\main.cpp
+	<iostream>
+	"stdlib.h"
+	"stdlib.h"
+	"Auto.h"
+
+1604687936 c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\cplusplus\auto.h
+
+1604688317 source:c:\users\gsonv\documents\github\programacion-laboratorio2-2020-utn\com7-sonvico\cplusplus\auto.cpp
+	<iostream>
+	"Auto.h"
+	"string.h"
+
