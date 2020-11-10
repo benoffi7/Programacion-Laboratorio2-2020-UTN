@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1573042155 source:d:\tsp\programacion 2\clases\estructuras compuestas\listadelistacajacliente\main.c
+	<stdio.h>
+	<stdlib.h>
+	"listaCliente.h"
+	"nodoCaja.h"
+
+1572970363 d:\tsp\programacion 2\clases\estructuras compuestas\listadelistacajacliente\listaenlazada.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1572970363 source:d:\tsp\programacion 2\clases\estructuras compuestas\listadelistacajacliente\listaenlazada.c
+	"listaEnlazada.h"
+
+1573041863 source:d:\tsp\programacion 2\clases\estructuras compuestas\listadelistacajacliente\nodocaja.c
+	"nodoCaja.h"
+
+1572965261 d:\tsp\programacion 2\clases\estructuras compuestas\listadelistacajacliente\listadecajas.h
+	"listaEnlazada.h"
+
+1573041813 d:\tsp\programacion 2\clases\estructuras compuestas\listadelistacajacliente\nodocaja.h
+	"listaCliente.h"
+
+1573041538 d:\tsp\programacion 2\clases\estructuras compuestas\listadelistacajacliente\listacliente.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1573042366 source:d:\tsp\programacion 2\clases\estructuras compuestas\listadelistacajacliente\listacliente.c
+	"listaCliente.h"
+
