@@ -164,14 +164,14 @@ void FileALista(nodo** listaEspecies)
     {
         while(fread(&reg,sizeof(registroArchivo),1,fp)>0)
         {
-           if (existeID(listaEspecies,reg.idEspecie))
+           if (existeID(*listaEspecies,reg.idEspecie))
            {
-               busquedaEInsercion(listaEspecies,reg);
+               busquedaEInsercion(*listaEspecies,reg);
            }
            else
            {
                insertarOrdenadoEspecie(listaEspecies,reg.idEspecie,reg.especie);
-               busquedaEInsercion(listaEspecies,reg.idEspecie,reg.animal,reg.cant,reg.habitat);
+               busquedaEInsercion(*listaEspecies,reg.idEspecie,reg.animal,reg.cant,reg.habitat);
            }
 
 
