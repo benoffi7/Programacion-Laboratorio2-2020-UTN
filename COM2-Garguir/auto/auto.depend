@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1605136727 source:d:\developer\c\2020-2 - comision 9\auto\auto.cpp
+	"Auto.h"
+
+1605136727 d:\developer\c\2020-2 - comision 9\auto\auto.h
+	<iostream>
+	<string>
+
+1605136738 source:d:\developer\c\2020-2 - comision 9\auto\main.cpp
+	<iostream>
+	"Auto.h"
+
