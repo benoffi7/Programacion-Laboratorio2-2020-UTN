@@ -1,15 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct nodoArbol
 {
     struct nodoArbol * izq;
     struct nodoArbol * der;
-    int dato;
-}nodoArbol;
+    char nombreAlumno[30];
+    int nota;
+} nodoArbol;
+
+typedef struct nodoLista
+{
+    struct nodoLista * sig;
+    int nota;
+
+} nodoLista;
+
+typedef struct celda
+{
+    struct nodoLista * notas;
+    char nombreAlumno[30];
+} celda;
 
 nodoArbol * inicArbol();
-nodoArbol * crearNodoArbol(int dato);
+nodoArbol * crearNodoArbol(int dato,char nombre[30]);
 nodoArbol * insertar(nodoArbol * raiz, nodoArbol * nuevoNodo);
 nodoArbol * cargarMuchos(nodoArbol * raiz);
 void mostrar(nodoArbol * raiz);
@@ -21,7 +36,13 @@ int existeNodo (nodoArbol * raiz, int dato);
 nodoArbol * nodoMasIzquierda(nodoArbol * nodo);
 nodoArbol * nodoMasDerecha(nodoArbol * nodo);
 nodoArbol * borrarNodo(nodoArbol * nodo, int dato);
-
+int pasarDelArbolAlArregloDeListas(celda muchosAlumnos[30], nodoArbol * nodo, int validos);
+void mostrarArreglo(celda muchosAlumnos[30], int validos);
+void mostrarLista(nodoLista * lista);
+int posAlumnoEnArreglo(celda muchosAlumnos[30], char nombre[30], int validos);
+nodoLista * crearNodoLista(int nota);
+nodoLista * agregarPpio(nodoLista * l, nodoLista * nn);
+nodoLista * inicLista();
 
 int main()
 {
@@ -31,9 +52,96 @@ int main()
     //nodoArbol * NMD = nodoMasDerecha(raiz->izq);
     //printf("NMI %d\n",NMI->dato);
     //printf("NMD %d\n",NMD->dato);
-    raiz = borrarNodo(raiz,4);
+    //raiz = borrarNodo(raiz,4);
     mostrar(raiz);
+    celda muchosAlumnos[30];
+    int validos = pasarDelArbolAlArregloDeListas(muchosAlumnos,raiz,0);
+    printf("validos es %d\n",validos);
+    mostrarArreglo(muchosAlumnos,validos);
+
     return 0;
+}
+
+int pasarDelArbolAlArregloDeListas(celda muchosAlumnos[30], nodoArbol * nodo, int validos)
+{
+    if (nodo != NULL)
+    {
+        if (validos<30)
+        {
+            int posBuscada = posAlumnoEnArreglo(muchosAlumnos,nodo->nombreAlumno,validos);
+            if (posBuscada==-1)
+            {
+                muchosAlumnos[validos].notas = inicLista();
+                strcpy(muchosAlumnos[validos].nombreAlumno,nodo->nombreAlumno);
+                validos = validos + 1;
+                posBuscada = validos - 1;
+            }
+
+            nodoLista * aux = crearNodoLista(nodo->nota);
+            muchosAlumnos[posBuscada].notas = agregarPpio(muchosAlumnos[posBuscada].notas,aux);
+
+            validos = pasarDelArbolAlArregloDeListas(muchosAlumnos,nodo->izq,validos);
+            validos = pasarDelArbolAlArregloDeListas(muchosAlumnos,nodo->der,validos);
+        }
+    }
+    return validos;
+}
+
+void mostrarArreglo(celda muchosAlumnos[30], int validos)
+{
+    int indice = 0;
+    for (indice = 0;indice<validos;indice++)
+    {
+        printf("nombre --> %s\n",muchosAlumnos[indice].nombreAlumno);
+        printf("lista de notas\n");
+        mostrarLista(muchosAlumnos[indice].notas);
+        printf("****************\n");
+    }
+}
+
+void mostrarLista(nodoLista * lista)
+{
+    if (lista)
+    {
+        printf("nota --> %d\n",lista->nota);
+        mostrarLista(lista->sig);
+    }
+}
+
+int posAlumnoEnArreglo(celda muchosAlumnos[30], char nombre[30], int validos)
+{
+    int pos = -1;
+    int indice;
+    for (indice = 0; indice<validos; indice++)
+    {
+        if (strcmp(muchosAlumnos[indice].nombreAlumno,nombre) == 0)
+        {
+            pos = indice;
+        }
+    }
+    return pos;
+}
+
+nodoLista * crearNodoLista(int nota)
+{
+    nodoLista * aux = (nodoLista*)malloc(sizeof(nodoLista));
+    aux->sig = NULL;
+    aux->nota = nota;
+    return aux;
+}
+
+nodoLista * agregarPpio(nodoLista * l, nodoLista * nn)
+{
+    if (l == NULL)
+    {
+        l = nn;
+    }
+    else
+    {
+        nn->sig = l;
+        l = nn;
+    }
+    return l;
 }
 
 nodoArbol * inicArbol()
@@ -41,10 +149,16 @@ nodoArbol * inicArbol()
     return NULL;
 }
 
-nodoArbol * crearNodoArbol(int dato)
+nodoLista * inicLista()
+{
+    return NULL;
+}
+
+nodoArbol * crearNodoArbol(int dato, char nombre[30])
 {
     nodoArbol * aux = (nodoArbol*) malloc(sizeof(nodoArbol));
-    aux->dato = dato;
+    aux->nota = dato;
+    strcpy(aux->nombreAlumno,nombre);
     aux->der = NULL;
     aux->izq = NULL;
     return aux;
@@ -53,28 +167,27 @@ nodoArbol * crearNodoArbol(int dato)
 nodoArbol * cargarMuchos(nodoArbol * raiz)
 {
     char mander = 's';
+    char nombre[30];
     int dato;
     int respuesta;
     while (mander == 's')
     {
-        printf("ingrese un dato\n");
+        printf("ingrese una nota\n");
         fflush(stdin);
         scanf("%d",&dato);
 
-        respuesta = existeNodo(raiz,dato);
+        printf("ingrese un nombre\n");
+        fflush(stdin);
+        scanf("%s",&nombre);
 
-        if (respuesta == 0)
-        {
-            nodoArbol * nuevoNodo = crearNodoArbol(dato);
 
-            raiz = insertar(raiz,nuevoNodo);
+        nodoArbol * nuevoNodo = crearNodoArbol(dato,nombre);
 
-            printf("el dato ha sido insertado de manera correcta\n");
-        }
-        else
-        {
-            printf("ingrese un numero que no este repetido, gracias!\n");
-        }
+        raiz = insertar(raiz,nuevoNodo);
+
+        printf("el dato ha sido insertado de manera correcta\n");
+
+
 
         printf("desea seguir? s/n \n");
         fflush(stdin);
@@ -91,7 +204,7 @@ nodoArbol * insertar(nodoArbol * raiz, nodoArbol * nuevoNodo)
     }
     else
     {
-        if (nuevoNodo->dato < raiz->dato)
+        if (nuevoNodo->nota < raiz->nota)
         {
             raiz->izq = insertar(raiz->izq,nuevoNodo);
         }
@@ -112,19 +225,23 @@ void mostrar(nodoArbol * raiz)
     scanf("%d",&opcion);
     switch (opcion)
     {
-        case 1 : preorder(raiz);
-                 break;
-        case 2 : inorder(raiz);
-                 break;
-        case 3 : postorder(raiz);
-                 break;
-        default: printf("no existe el modo. sorry not sorry \n");
+    case 1 :
+        preorder(raiz);
+        break;
+    case 2 :
+        inorder(raiz);
+        break;
+    case 3 :
+        postorder(raiz);
+        break;
+    default:
+        printf("no existe el modo. sorry not sorry \n");
     }
 }
 
 void mostrarNodo(nodoArbol * nodo)
 {
-    printf("----%d----\n",nodo->dato);
+    printf("----%s----\n",nodo->nombreAlumno);
 }
 
 void preorder(nodoArbol * nodo)
@@ -163,13 +280,13 @@ int existeNodo (nodoArbol * raiz, int dato)
 
     if (raiz!=NULL)
     {
-        if (raiz->dato == dato)
+        if (raiz->nota == dato)
         {
             respuesta = 1;
         }
         else
         {
-            if (dato > raiz->dato)
+            if (dato > raiz->nota)
             {
                 respuesta = existeNodo(raiz->der,dato);
             }
@@ -203,21 +320,21 @@ nodoArbol * borrarNodo(nodoArbol * nodo, int dato)
     }
     else // hay algo
     {
-        if (nodo->dato == dato)
+        if (nodo->nota == dato)
         {
             if (nodo->izq!=NULL)
             {
                 nodoArbol * masDer = nodoMasDerecha(nodo->izq);//busco la MAYOR (DER) clave de los MENORES (IZQ)
                 //el 2 en nuestro ejemplo
-                nodo->dato = masDer->dato; //hago el reemplazo!
-                nodo->izq = borrarNodo(nodo->izq,masDer->dato); //volvemos a borrar pero la hoja que es más facil
+                nodo->nota = masDer->nota; //hago el reemplazo!
+                nodo->izq = borrarNodo(nodo->izq,masDer->nota); //volvemos a borrar pero la hoja que es más facil
             }
             else if (nodo->der!=NULL)
             {
                 nodoArbol * masIzq = nodoMasIzquierda(nodo->der); //busco la MENOR (IZQ) clave de los MAYORES (DER)
                 //el 5 en nuestro ejemplo
-                nodo->dato = masIzq->dato;
-                nodo->der = borrarNodo(nodo->der,masIzq->dato); //volvemos a borrar pero la hoja que es más facil
+                nodo->nota = masIzq->nota;
+                nodo->der = borrarNodo(nodo->der,masIzq->nota); //volvemos a borrar pero la hoja que es más facil
             }
             else
             {
@@ -228,13 +345,13 @@ nodoArbol * borrarNodo(nodoArbol * nodo, int dato)
                 }
             }
         }
-        else if (dato > nodo->dato)
+        else if (dato > nodo->nota)
         {
             nodo->der = borrarNodo(nodo->der,dato);
         }
-        else if (dato < nodo->dato)
+        else if (dato < nodo->nota)
         {
-             nodo->izq = borrarNodo(nodo->izq,dato);
+            nodo->izq = borrarNodo(nodo->izq,dato);
         }
     }
     return nodo;
