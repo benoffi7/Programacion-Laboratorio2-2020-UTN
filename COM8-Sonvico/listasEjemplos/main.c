@@ -59,15 +59,146 @@ void mostrarLista(nodo * lista)
     nodo * seg=lista;
 
     printf("Contenido de la lista\n");
-
-    puts("Inicio");
     while(seg!=NULL)
     {
         mostrarNodo(seg);
         seg=seg->siguiente;
     }
-    puts("Fin");
 }
+
+nodo * buscarUltimo(nodo * lista)
+{
+    nodo * seg = lista;
+    if(seg != NULL)
+        while(seg->siguiente != NULL)
+        {
+            seg = seg->siguiente;
+        }
+    return seg;
+}
+
+nodo * agregarAlFinal(nodo * lista, nodo * nuevo)
+{
+    if(lista==NULL)
+    {
+        lista=nuevo;
+    }
+    else
+    {
+        nodo * ultimo=buscarUltimo(lista);
+        ultimo->siguiente=nuevo;
+    }
+    return lista;
+}
+
+void agregarAlFinalPP(nodo * * pLista, nodo * nuevo)
+{
+    if(*pLista==NULL)
+    {
+        *pLista=nuevo;
+    }
+    else
+    {
+        nodo * ultimo=buscarUltimo(*pLista);
+        ultimo->siguiente=nuevo;
+    }
+}
+
+
+
+nodo * insertarOrdenado(nodo * lista, nodo * nuevo)
+{
+    if(lista==NULL)
+    {
+        lista=nuevo;  /// 1er caso: la lista esta vacia
+    }
+    else
+    {
+        if(strcmp(nuevo->dato.nombre, lista->dato.nombre)<0)
+        {
+            lista=agregarAlPrincipio(lista, nuevo);   /// 2do caso: inserto al ppio porque el nuevo es menor
+        }
+        else
+        {
+            nodo * ante=lista;  /// 3er y 4to caso: inserto al medio o al final
+            nodo * seg=lista->siguiente;
+
+            while(seg!=NULL && strcmp(nuevo->dato.nombre, seg->dato.nombre)>0)
+            {
+                ante=seg;
+                seg=seg->siguiente;
+            }
+
+            ante->siguiente=nuevo;
+            nuevo->siguiente=seg;
+        }
+    }
+    return lista;
+}
+
+nodo * borrarUnNodoPorNombre(nodo * lista, char nombre[])
+{
+    if(lista!=NULL)
+    {
+        if(strcmp(lista->dato.nombre, nombre)==0)  /// 1er caso, borrar el inicio
+        {
+            nodo * aux = lista;
+            lista=lista->siguiente;
+            free(aux);
+        }
+        else   /// 2do y 3er caso, borrar por el medio o el ultimo
+        {
+            nodo * ante = lista;
+            nodo * seg = lista->siguiente;
+
+            while(seg!=NULL && strcmp(nombre, seg->dato.nombre)!=0)
+            {
+                ante=seg;
+                seg=seg->siguiente;
+            }
+
+            if(seg!=NULL) /// encontre el nodo a borrar
+            {
+                ante->siguiente=seg->siguiente;
+                free(seg);
+            }
+        }
+    }
+    return lista;
+}
+
+nodo * borrarTodaLaLista(nodo * lista)
+{
+    nodo *aux;
+
+    nodo *seg=lista;
+
+    while(seg!=NULL)
+    {
+        aux=seg;
+
+        seg=seg->siguiente;
+
+        free(aux);
+    }
+
+    return seg;
+}
+
+void punteroDoble(nodo * * pLista)
+{
+    nodo * primero;
+
+    if((*pLista)!=NULL)
+    {
+        primero = *pLista;
+
+        *pLista = (*pLista)->siguiente;
+
+        free(primero);
+    }
+}
+
 
 
 int main()
@@ -75,10 +206,10 @@ int main()
 
     nodo * lista=inicLista();
 
-    persona aux1={"pepe",23};
-    persona aux2={"maria",24};
-    persona aux3={"lala",24};
-    persona aux4={"lolo",24};
+    persona aux1= {"pepe",23};
+    persona aux2= {"maria",24};
+    persona aux3= {"lala",24};
+    persona aux4= {"lolo",24};
 
     nodo * nuevo1=crearNodo(aux1);
     nodo * nuevo2=crearNodo(aux2);
@@ -94,6 +225,10 @@ int main()
 
     lista=agregarAlPrincipio(lista, nuevo4);
 
+
+    mostrarLista(lista);
+
+    punteroDoble(&lista);
 
     mostrarLista(lista);
 /// Jugando con la me mmoria dinamica
@@ -129,6 +264,8 @@ int main()
     for (int i=0; i<30; i++){
          printf("%d ", otroArrayDinamico[i]);
     }*/
+
+
 
     return 0;
 }
